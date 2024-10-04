@@ -10,6 +10,15 @@
     </div>
 
     <div class="account">
-        <a href="..\..\Login.php">Sign-up/log-in</a>
+        <a href="..\..\Login.php">
+
+            <?php
+                if (isset($_SESSION["username"])){
+                    echo $_SESSION['username'];
+                } else {
+                    echo "Sign-up/log-in";
+                }
+            ?>
+        </a>
     </div>
 </nav>

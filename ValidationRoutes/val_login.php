@@ -1,6 +1,5 @@
 <?php
-    // Sessions should not be included as it will create a 
-    // security flaws.
+    session_start();
     include "DB_CONNECTIONS\PDO_CONNECT.php";
     $usr_err = "";
 
@@ -12,24 +11,37 @@
             $msg = "Email or password cannot be empty.";
         } else {
         try{ 
-                $sql_customer = "SELECT * FROM customer WHERE Email = :mail AND Password = :user_pwd ;";
-                $sql_admin = "SELECT * FROM admin WHERE Email = :mail AND Password = :user_pwd ;";
+                $sql_customer = "SELECT * FROM customer WHERE Email = :mail ;";
+                $sql_admin = "SELECT * FROM admin WHERE Email = :mail ;";
 
                 $customer_query = $conn->prepare($sql_customer);
-                $customer_query->execute(array('mail' => $mail, 'user_pwd' => $user_pwd));
+                $customer_query->execute(array('mail' => $mail));
                 $customer_count = $customer_query->rowCount();
                 
                 if ($customer_count > 0){
-                    header("Location: http://localhost:7777/futuretech/route\Main Pages\homepage.php");
-                    die();
+                    $result = $customer_query->fetch(PDO::FETCH_ASSOC);
+
+                    if (password_verify($user_pwd, $result['Password'])){
+                        $_SESSION["username"] = $result['UserName'];
+                        header("Location: http://localhost:7777/futuretech/homepage.php");
+                        die();
+                    }
+
                     
                 } else {
                     $admin_query = $conn->prepare($sql_admin);
-                    $admin_query->execute(array('mail' => $mail, 'user_pwd' => $user_pwd));
+                    $admin_query->execute(array('mail' => $mail));
         
                     if ($admin_query->rowCount() > 0){
-                        header("Location: http://localhost:7777/futuretech/route\Main Pages\adminpage.php");
-                        die();
+                        $result = $admin_query->fetch(PDO::FETCH_ASSOC);
+
+                        if (password_verify($user_pwd, $result['Password'])){
+                            $_SESSION["username"] = $result['AdminName'];
+                            header("Location: http://localhost:7777/futuretech\adminpage.php");
+                            die();
+                        }
+
+
                     } else{
                         $usr_err = "Error in email and password";
                     }
