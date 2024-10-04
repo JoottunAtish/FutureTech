@@ -23,22 +23,28 @@
 
                     if (password_verify($user_pwd, $result['Password'])){
                         $_SESSION["username"] = $result['UserName'];
+                        $_SESSION["email"] = $result['Email'];
                         header("Location: http://localhost:7777/futuretech/homepage.php");
                         die();
+                    } else{
+                        $usr_err = "Error in email and password";
                     }
-
+                    
                     
                 } else {
                     $admin_query = $conn->prepare($sql_admin);
                     $admin_query->execute(array('mail' => $mail));
-        
+                    
                     if ($admin_query->rowCount() > 0){
                         $result = $admin_query->fetch(PDO::FETCH_ASSOC);
-
+                        
                         if (password_verify($user_pwd, $result['Password'])){
                             $_SESSION["username"] = $result['AdminName'];
+                            $_SESSION["email"] = $result['Email'];
                             header("Location: http://localhost:7777/futuretech\adminpage.php");
                             die();
+                        }else{
+                            $usr_err = "Error in email and password";
                         }
 
 
