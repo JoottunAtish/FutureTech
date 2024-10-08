@@ -34,7 +34,7 @@
                         <label for="passwd">Password</label>
                 </div>
                 
-                <div class="form-switch form-check">
+                <div class="form-switch form-check m-2">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" onclick="togglepass()">
                     <label>Show password</label>
                 </div>
