@@ -4,31 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FutureTech - Login</title>
-    <link rel="stylesheet" href="style.css">
-    <?php include "ValidationRoutes\\val_login.php" ?>
+    <script src="JS\Passwd_toggle.js" async></script>
+
+    <?php
+        include "Essential_tags/Common_TAG.php";
+        include "ValidationRoutes\\val_login.php";
+     ?>
+
 </head>
-<body class= "center-flex">
+<body class= "">
 
-    <div class="container center-flex  col-align">
-        <div class="shop-name">
-            <h1>FutureTech</h1>
+    <div class="container min-vh-100 d-flex justify-content-center align-items-center">
+
+        <div class="mb-3 col-4">
+            <form class="row g-3" action="<?php echo $_SERVER["PHP_SELF"]?>" method="POST">
+                <div class="mb-3 d-flex justify-content-center">
+                    <h1 class="display-2">FutureTech</h1>
+                </div>
+                
+                <div class="form-floating col-12">
+                    <input class="form-control" type="email" name="username" id="user" placeholder="E-mail" required>
+                    <label for="user">Email Address</label>
+                </div>
+                <!-- to auto fill add the value param in the input tag -->
+                
+            <div class="form-floating col-12">
+                    <input class ="pwd form-control" type="password" name="pass" id="passwd" placeholder="Password" required>
+                    <label for="passwd">Password</label>
+            </div>
+                
+                <div class="form-switch form-check">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" onclick="togglepass()">
+                    <label>Show password</label>
+                </div>
+
+                <P style="color: red;"><?php echo $usr_err?></P>
+
+                <button class="btn btn-primary mb-3" type="submit" name="login">Login</button>
+
+                <div class="d-flex justify-content-between">
+                    <a class="" href="">forgot your password?</a>
+                    <a class="" href="signup.php">Register an account</a>
+                </div>
+                
+            </form>
+
         </div>
+        
 
-        <form class="center-flex col-align gap-align" action="<?php echo $_SERVER["PHP_SELF"]?>" method="POST">
-            <input type="text" name="username" id="user" placeholder="E-mail" required>
-            <!-- to auto fill add the value param in the input tag -->
-            
-            <input type="password" name="pass" id="passwd" placeholder="Password" required>
-
-            <P style="color: red;"><?php echo $usr_err?></P>
-
-            <button class="btn type="submit" name="login">Login</button>
-        </form>
-
-        <div class="col-align">
-            <a href="">forgot your password?</a>
-            <a href="signup.php">Register an account</a>
-        </div>
     </div>
     
 </body>
