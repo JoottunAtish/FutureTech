@@ -12,13 +12,14 @@
      ?>
 
 </head>
-<body class= "">
+<body>
 
     <div class="container min-vh-100 d-flex justify-content-center align-items-center">
 
         <div class="mb-3 col-4">
             <form class="row g-3" action="<?php echo $_SERVER["PHP_SELF"]?>" method="POST">
-                <div class="mb-3 d-flex justify-content-center">
+                
+                <div class="col-12 d-flex justify-content-center">
                     <h1 class="display-2">FutureTech</h1>
                 </div>
                 
@@ -28,10 +29,10 @@
                 </div>
                 <!-- to auto fill add the value param in the input tag -->
                 
-            <div class="form-floating col-12">
-                    <input class ="pwd form-control" type="password" name="pass" id="passwd" placeholder="Password" required>
-                    <label for="passwd">Password</label>
-            </div>
+                <div class="form-floating col-12">
+                        <input class ="pwd form-control" type="password" name="pass" id="passwd" placeholder="Password" required>
+                        <label for="passwd">Password</label>
+                </div>
                 
                 <div class="form-switch form-check">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" onclick="togglepass()">
