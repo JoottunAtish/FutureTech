@@ -39,7 +39,7 @@
                     <label>Show password</label>
                 </div>
 
-                <P style="color: red;"><?php echo $usr_err?></P>
+                <P class="text-danger"><?php echo $usr_err?></P>
 
                 <button class="btn btn-primary mb-3" type="submit" name="login">Login</button>
 
