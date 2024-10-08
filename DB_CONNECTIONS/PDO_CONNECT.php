@@ -1,7 +1,7 @@
 <?php
     $servername = "localhost";
-    $username = "atish";
-    $password = "atish";
+    $username = "Kisto";
+    $password = "123456789";
     $pdo_msg = "";
 
     try {
