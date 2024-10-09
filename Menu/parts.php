@@ -21,6 +21,17 @@
     <?php
         include "menu-list.php";
     ?>
+    <!-- Adding a search feature -->
+
+
+  <!-- Hero Section -->
+  <div class="container d-flex justify-content-center align-items-center">
+    <div class="text-center">
+        <h1>Welcome to FutureTech</h1>
+        <p>Empowering the Future with Technology</p>
+    </div>
+</div>
+
 
     <!-- Adding a search feature -->
     <div class="search-container">
