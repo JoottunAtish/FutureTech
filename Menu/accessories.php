@@ -14,7 +14,7 @@
         include "../Essential_tags/Common_TAG.php";
      ?>
 
-    <script src="JS\live-search.js" async></script>
+    <script src="..\JS\live-search.js" async></script>
     <title>FutureTech - Accessories</title>
 </head>
 <body>
@@ -23,22 +23,15 @@
     ?>
 
     <!-- Adding a search feature -->
-  <!-- Hero Section -->
-  <div class="container d-flex justify-content-center align-items-center">
-    <div class="text-center">
-        <h1>Welcome to FutureTech</h1>
-        <p>Empowering the Future with Technology</p>
-    </div>
-</div>
-
-    <!-- Adding a search feature -->
-    <div class="search-container">
-        <input id='live-search' type="text" placeholder="Search...." >
-        <!-- This will display the search results of the user's query -->
-        <div class="search-dislay">
-            <!-- Query will be added here -->
+    <!-- Hero Section -->
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="text-center">
+            <h1>Welcome to FutureTech</h1>
+            <p>Empowering the Future with Technology</p>
         </div>
     </div>
+
+    <?php include "..\Forms\Search-function.php" ?>
 
     <div class="card-container">
     </div>
