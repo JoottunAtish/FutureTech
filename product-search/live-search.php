@@ -6,13 +6,14 @@
 
         $user_in = addslashes($user_in);
 
-        $query = "SELECT * FROM `product` WHERE ProductName LIKE '%{$user_in}%' OR  Description LIKE '%{$user_in}%'" ;
+        $query = "SELECT * FROM `products` WHERE ProductName LIKE '%{$user_in}%' OR  Description LIKE '%{$user_in}%'" ;
 
         $res = $conn->prepare($query);
         $res->execute();
+        $results = $res->fetchAll(PDO::FETCH_ASSOC);
 
         if ($res->rowCount() > 0){
-            while($result = $res->fetch(PDO::FETCH_ASSOC)){
+            foreach ($results as $result){
 
                 $pid = $result['ProductID'];
                 $Pname = $result['ProductName'];
