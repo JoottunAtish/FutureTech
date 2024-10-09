@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2024 at 07:21 AM
+-- Generation Time: Oct 09, 2024 at 05:35 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `futuretech`
 --
+CREATE DATABASE IF NOT EXISTS `futuretech` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `futuretech`;
 
 -- --------------------------------------------------------
 
@@ -68,7 +70,8 @@ INSERT INTO `customer` (`CustomerID`, `UserName`, `Email`, `Password`, `Country`
 (1, 'Atish', 'atish@gmail.com', '1234', 'Mauritius', 'Riviere du rempart', 12343, '12345678'),
 (4, 'Atish', 'atish@test.io', '$2y$10$BqnHCGQGWWkBUHX0u.crG.234PKc2QDFRchGRoYEmbh8a/wC14cKK', 'Mauritius', 'Riviere du Rempart', 31902, '1234567'),
 (6, 'poshan', 'poshan@test.io', '$2y$10$wVQ9/JoJNQc9TxgDm5gtOeCzMxNPo45rFI53KD0yVsNOxU0bDD6KG', 'Mauritius', 'Riviere du Rempart', 1234, '12345678'),
-(7, 'elipson', 'kevin@test.io', '$2y$10$edz4ci.0K.mSUFUMl.d/RurBjf4MuP8EskrMpSGt7.yHR5LZR8nPW', 'Mauritius', 'Riviere du Rempart', 1234, '12345678');
+(7, 'elipson', 'kevin@test.io', '$2y$10$edz4ci.0K.mSUFUMl.d/RurBjf4MuP8EskrMpSGt7.yHR5LZR8nPW', 'Mauritius', 'Riviere du Rempart', 1234, '12345678'),
+(8, 'KY20', 'kisto@test.io', '$2y$10$dr8/HJY.nXFlHOLBS5jf4.avCb48Eerq6FoMopwsWB/rXCUkAzRBy', 'Mauritius', 'Petite Rafery', 12345, '57858747');
 
 -- --------------------------------------------------------
 
@@ -98,49 +101,45 @@ CREATE TABLE `orderpayment` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Table structure for table `productcategory`
 --
 
-CREATE TABLE `product` (
-  `ProductID` int(11) UNSIGNED NOT NULL,
-  `ProductPrice` double NOT NULL,
+CREATE TABLE `productcategory` (
+  `ProductID` int(11) NOT NULL,
+  `Category` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `productcategory`
+--
+
+INSERT INTO `productcategory` (`ProductID`, `Category`) VALUES
+(1, 2),
+(2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `ProductID` int(11) NOT NULL,
+  `ProductName` text NOT NULL,
   `Discount` int(11) DEFAULT NULL,
-  `ProductName` varchar(100) NOT NULL,
+  `ProductPrice` decimal(10,0) NOT NULL,
   `QtyInStock` int(11) NOT NULL,
-  `Description` text NOT NULL
+  `Description` text NOT NULL,
+  `imgPath` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `product`
+-- Dumping data for table `products`
 --
 
-INSERT INTO `product` (`ProductID`, `ProductPrice`, `Discount`, `ProductName`, `QtyInStock`, `Description`) VALUES
-(1, 2300, 0, 'Bluetooth USB Dongle for PC, MAC, Laptops', 3, 'Bluetooth USB dongle use to connect Bluetooth devices. '),
-(2, 100, 10, 'Headphone for PC and Mac. High quality Headphone for gaming and to listen to music', 4, 'A good quality headphone with a big ass driver.');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `productsupply`
---
-
-CREATE TABLE `productsupply` (
-  `ProductID` int(11) UNSIGNED NOT NULL,
-  `SupplierID` int(11) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `suppiler`
---
-
-CREATE TABLE `suppiler` (
-  `SupplierID` int(11) UNSIGNED NOT NULL,
-  `SupplierName` varchar(40) NOT NULL,
-  `SupplierAddress` varchar(120) NOT NULL,
-  `Country` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `products` (`ProductID`, `ProductName`, `Discount`, `ProductPrice`, `QtyInStock`, `Description`, `imgPath`) VALUES
+(1, 'Ryzen 5 7600X, 32 GB DDR5 RAM, NVIDIA RTX4060Ti, 1 TB NVME storage. Minimalist, Simple, Clean & Quite But Powerful Gaming PC.', 0, 80000, 1, '* Motherboard : Gigabyte B650i AX\r\n* CPU : AMD Ryzen 5 7600X\r\n* CPU Cooler : Thermalright Peerless Assassin 120 SE\r\n* Case : DeepCool CH170 Digital Black or White\r\n* GPU : Gigabyte RTX 4060Ti \r\n* RAM : 32GB DDR5 (16GB*2)\r\n* Storage : 1TB Kingston NV2 NVMe Gen4\r\n* PSU : Thermaltake BM3 650W PCIE 5.0\r\n* OS : Windows 11 Pro Activated\r\nRs 80,000 (vat incl)\r\n- CASH PRICE -\r\nPlease inbox us for credit price', 'Uploads\\IMG\\deepcool.jpg'),
+(2, 'G.Skill Trident Z RGB Series 16GB RAM(2x8GB DDR4)', 20, 7400, 4, 'Trident Z RGB Series, compatible for AMD Ryzen Series; Intel Z170 and newer.\r\n\r\nRecommended Use: High Performance or Gaming Memory\r\n\r\nThe Ultimate DDR4 RAM Just Got Better!\r\n\r\nFeaturing a completely exposed light bar with vibrant RGB LEDs, merged with the award-winning Trident Z heatspreader design, and constructed with the highest quality components, the Trident Z RGB DDR4 memory kit combines the most vivid RGB lighting with uncompromised performance.\r\n\r\nExceptionally Engineered\r\n\r\nTrident Z RGB retains the iconic design element of the traditional Trident Z lineup, featuring luxurious hair-line finished aluminum heatspreaders, an aggressive fin design for highly efficient heat dissipation, and a wide light diffuser on top for extravagant lighting effects. Look no further for a memory that combines performance and beauty for building a stylish, modern PC!', 'Uploads\\IMG\\gskill-trident-z-rgb-series.jpg');
 
 --
 -- Indexes for dumped tables
@@ -173,23 +172,16 @@ ALTER TABLE `orderpayment`
   ADD KEY `OrderID` (`OrderID`);
 
 --
--- Indexes for table `product`
+-- Indexes for table `productcategory`
 --
-ALTER TABLE `product`
+ALTER TABLE `productcategory`
   ADD PRIMARY KEY (`ProductID`);
 
 --
--- Indexes for table `productsupply`
+-- Indexes for table `products`
 --
-ALTER TABLE `productsupply`
-  ADD PRIMARY KEY (`ProductID`,`SupplierID`),
-  ADD KEY `SupplierID` (`SupplierID`);
-
---
--- Indexes for table `suppiler`
---
-ALTER TABLE `suppiler`
-  ADD PRIMARY KEY (`SupplierID`);
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`ProductID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -205,7 +197,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `CustomerID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `CustomerID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `customerorder`
@@ -220,16 +212,16 @@ ALTER TABLE `orderpayment`
   MODIFY `PayID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT for table `productcategory`
 --
-ALTER TABLE `product`
-  MODIFY `ProductID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `productcategory`
+  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `suppiler`
+-- AUTO_INCREMENT for table `products`
 --
-ALTER TABLE `suppiler`
-  MODIFY `SupplierID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `products`
+  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -248,11 +240,10 @@ ALTER TABLE `orderpayment`
   ADD CONSTRAINT `OrderPayment_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `customerorder` (`orderID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `productsupply`
+-- Constraints for table `productcategory`
 --
-ALTER TABLE `productsupply`
-  ADD CONSTRAINT `ProductSupply_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `product` (`ProductID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ProductSupply_ibfk_2` FOREIGN KEY (`SupplierID`) REFERENCES `suppiler` (`SupplierID`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `productcategory`
+  ADD CONSTRAINT `productcategory_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
