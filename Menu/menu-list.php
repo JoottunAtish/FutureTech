@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg p-3">
     <a href="http://localhost:7777/futuretech/homepage.php" class="navbar-brand">
-        sample logo here
+        <img src= "images\Logo\Logo.png" alt="Futuretech Logo" width="50" style="vertical-align:bottom">
     </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
