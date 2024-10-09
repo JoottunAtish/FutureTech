@@ -20,7 +20,7 @@
             <form class="row g-3" action="<?php echo $_SERVER["PHP_SELF"]?>" method="POST">
                 
                 <div class="col-12 d-flex justify-content-center">
-                    <h1 class="display-2">FutureTech</h1>
+                    <a href="homepage.php" class="display-2">FutureTech</a>
                 </div>
                 
                 <div class="form-floating col-12">

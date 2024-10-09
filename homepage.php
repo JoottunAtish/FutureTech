@@ -21,7 +21,7 @@
     <?php
         include "Menu\menu-list.php";
     ?>
-    <p> This is a p tag</p>
+
     <!-- Adding a search feature -->
     <div class="search-container">
         <input id='live-search' type="text" placeholder="Search...." >
