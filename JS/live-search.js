@@ -1,9 +1,11 @@
 $(document).ready(function () {
+    var All_limit = 9;
+    var deal_limit = 3;
     $(".search-display").html("");
     $.ajax({
         url: "http://localhost:7777/futuretech/Defaultcard/default_homecard.php",
         method: "POST",
-        data: { input: 3 },
+        data: { all: All_limit, deal: deal_limit },
         success: function (data) {
             $(".live-searh-default").html(data);
         }
@@ -30,7 +32,8 @@ $(document).ready(function () {
             $.ajax({
                 url: "http://localhost:7777/futuretech/Defaultcard/default_homecard.php",
                 method: "POST",
-                data: { input: 5 },
+                data: { all: All_limit, deal: deal_limit },
+
                 success: function (data) {
                     $(".live-searh-default").html(data);
                 }

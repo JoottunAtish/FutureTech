@@ -16,7 +16,7 @@
 
     <div class="container min-vh-100 d-flex justify-content-center align-items-center">
 
-        <div class="mb-3 col-4">
+        <div class="mb-3 col-md-3">
             <form class="row g-3" action="<?php echo $_SERVER["PHP_SELF"]?>" method="POST">
                 
                 <div class="col-12 d-flex justify-content-center">

@@ -24,7 +24,7 @@ if (isset($_POST['input'])) {
 
     ?>
             <div class="card text-center mb-3" style="max-width: 300px;">
-                <img src="<?php echo $p_img; ?>" alt="<?php echo $p_name; ?>" class="card-img img-responsive">
+                <img src="<?php echo "http://localhost:7777/futuretech/" . $p_img; ?>" alt="<?php echo $p_name; ?>" class="card-img img-responsive">
                 <div class="card-body">
                     <h4 class="card-title display-10 text-truncate"><?php echo $p_name; ?></h4>
                     <p class="card-text text-truncate"><?php echo $p_des; ?></p>

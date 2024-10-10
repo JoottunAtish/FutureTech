@@ -1,15 +1,20 @@
 <?php
 include "..\DB_CONNECTIONS\PDO_CONNECT.php";
 
-$generic_sql = "SELECT * FROM `products` WHERE Discount > 0;";
+$generic_sql = "SELECT * FROM `products` WHERE Discount >= 20;";
 
 $g_query = $conn->prepare($generic_sql);
 $g_query->execute();
 
 if ($g_query->rowCount() > 0) {
     $results = $g_query->fetchAll(PDO::FETCH_ASSOC);
-
+    $count = 0;
     foreach ($results as $res) {
+        if ($count == $limit){
+            break;
+        }
+        $count++;
+
         $pid = $res['ProductID'];
         $p_name = $res['ProductName'];
         $p_des = $res["Description"];
