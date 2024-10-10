@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2024 at 05:35 PM
+-- Generation Time: Oct 10, 2024 at 12:56 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,8 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `futuretech`
 --
-CREATE DATABASE IF NOT EXISTS `futuretech` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `futuretech`;
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertProduct` (IN `productname` TEXT, IN `discount` INT, IN `price` DECIMAL(10,2), IN `qty` INT, IN `description` TEXT, IN `imgpath` VARCHAR(100), IN `cat` INT)   BEGIN
+    DECLARE pid INT;
+
+    -- Insert into the products table
+    INSERT INTO products (productname, discount, price, qty, description, imgpath)
+    VALUES (productname, discount, price, qty, description, imgpath);
+
+    -- Get the last inserted productID
+    SET pid = LAST_INSERT_ID();
+
+    -- Insert into the productcategory table
+    INSERT INTO productcategory (productID, categoryID)
+    VALUES (pid, cat);
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -115,7 +134,8 @@ CREATE TABLE `productcategory` (
 
 INSERT INTO `productcategory` (`ProductID`, `Category`) VALUES
 (1, 2),
-(2, 1);
+(2, 1),
+(3, 3);
 
 -- --------------------------------------------------------
 
@@ -138,8 +158,111 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`ProductID`, `ProductName`, `Discount`, `ProductPrice`, `QtyInStock`, `Description`, `imgPath`) VALUES
-(1, 'Ryzen 5 7600X, 32 GB DDR5 RAM, NVIDIA RTX4060Ti, 1 TB NVME storage. Minimalist, Simple, Clean & Quite But Powerful Gaming PC.', 0, 80000, 1, '* Motherboard : Gigabyte B650i AX\r\n* CPU : AMD Ryzen 5 7600X\r\n* CPU Cooler : Thermalright Peerless Assassin 120 SE\r\n* Case : DeepCool CH170 Digital Black or White\r\n* GPU : Gigabyte RTX 4060Ti \r\n* RAM : 32GB DDR5 (16GB*2)\r\n* Storage : 1TB Kingston NV2 NVMe Gen4\r\n* PSU : Thermaltake BM3 650W PCIE 5.0\r\n* OS : Windows 11 Pro Activated\r\nRs 80,000 (vat incl)\r\n- CASH PRICE -\r\nPlease inbox us for credit price', 'Uploads\\IMG\\deepcool.jpg'),
-(2, 'G.Skill Trident Z RGB Series 16GB RAM(2x8GB DDR4)', 20, 7400, 4, 'Trident Z RGB Series, compatible for AMD Ryzen Series; Intel Z170 and newer.\r\n\r\nRecommended Use: High Performance or Gaming Memory\r\n\r\nThe Ultimate DDR4 RAM Just Got Better!\r\n\r\nFeaturing a completely exposed light bar with vibrant RGB LEDs, merged with the award-winning Trident Z heatspreader design, and constructed with the highest quality components, the Trident Z RGB DDR4 memory kit combines the most vivid RGB lighting with uncompromised performance.\r\n\r\nExceptionally Engineered\r\n\r\nTrident Z RGB retains the iconic design element of the traditional Trident Z lineup, featuring luxurious hair-line finished aluminum heatspreaders, an aggressive fin design for highly efficient heat dissipation, and a wide light diffuser on top for extravagant lighting effects. Look no further for a memory that combines performance and beauty for building a stylish, modern PC!', 'Uploads\\IMG\\gskill-trident-z-rgb-series.jpg');
+(1, 'Ryzen 5 7600X, 32 GB DDR5 RAM, NVIDIA RTX4060Ti, 1 TB NVME storage. Minimalist, Simple, Clean & Quite But Powerful Gaming PC.', 30, 80000, 1, '* Motherboard : Gigabyte B650i AX\r\n* CPU : AMD Ryzen 5 7600X\r\n* CPU Cooler : Thermalright Peerless Assassin 120 SE\r\n* Case : DeepCool CH170 Digital Black or White\r\n* GPU : Gigabyte RTX 4060Ti \r\n* RAM : 32GB DDR5 (16GB*2)\r\n* Storage : 1TB Kingston NV2 NVMe Gen4\r\n* PSU : Thermaltake BM3 650W PCIE 5.0\r\n* OS : Windows 11 Pro Activated\r\nRs 80,000 (vat incl)\r\n- CASH PRICE -\r\nPlease inbox us for credit price', 'Uploads\\IMG\\deepcool.jpg'),
+(2, 'G.Skill Trident Z RGB Series 16GB RAM(2x8GB DDR4)', 20, 7400, 4, 'Trident Z RGB Series, compatible for AMD Ryzen Series; Intel Z170 and newer.\r\n\r\nRecommended Use: High Performance or Gaming Memory\r\n\r\nThe Ultimate DDR4 RAM Just Got Better!\r\n\r\nFeaturing a completely exposed light bar with vibrant RGB LEDs, merged with the award-winning Trident Z heatspreader design, and constructed with the highest quality components, the Trident Z RGB DDR4 memory kit combines the most vivid RGB lighting with uncompromised performance.\r\n\r\nExceptionally Engineered\r\n\r\nTrident Z RGB retains the iconic design element of the traditional Trident Z lineup, featuring luxurious hair-line finished aluminum heatspreaders, an aggressive fin design for highly efficient heat dissipation, and a wide light diffuser on top for extravagant lighting effects. Look no further for a memory that combines performance and beauty for building a stylish, modern PC!', 'Uploads\\IMG\\gskill-trident-z-rgb-series.jpg'),
+(3, 'Logitech K100 Classic Keyboard', 0, 575, 5, 'The K100 Classic Keyboard from Logitech is a reliable, full-size wired keyboard that plugs into the PS/2 port of your Windows-based PC. The full-size keyboard features a standard layout and number pad to allow you to achieve maximum productivity. In the case of an accident, strategically placed drainage channels under the keys allow any liquid to flow.', 'Uploads\\IMG\\logitech-k100-classic-keyboard.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `vw_cat_1`
+-- (See below for the actual view)
+--
+CREATE TABLE `vw_cat_1` (
+`ProductID` int(11)
+,`ProductName` text
+,`Discount` int(11)
+,`ProductPrice` decimal(10,0)
+,`QtyInStock` int(11)
+,`Description` text
+,`imgPath` varchar(100)
+,`Category` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `vw_cat_2`
+-- (See below for the actual view)
+--
+CREATE TABLE `vw_cat_2` (
+`ProductID` int(11)
+,`ProductName` text
+,`Discount` int(11)
+,`ProductPrice` decimal(10,0)
+,`QtyInStock` int(11)
+,`Description` text
+,`imgPath` varchar(100)
+,`Category` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `vw_cat_3`
+-- (See below for the actual view)
+--
+CREATE TABLE `vw_cat_3` (
+`ProductID` int(11)
+,`ProductName` text
+,`Discount` int(11)
+,`ProductPrice` decimal(10,0)
+,`QtyInStock` int(11)
+,`Description` text
+,`imgPath` varchar(100)
+,`Category` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `vw_cat_1` exported as a table
+--
+DROP TABLE IF EXISTS `vw_cat_1`;
+CREATE TABLE`vw_cat_1`(
+    `ProductID` int(11) NOT NULL DEFAULT '0',
+    `ProductName` text COLLATE utf8mb4_general_ci NOT NULL,
+    `Discount` int(11) DEFAULT NULL,
+    `ProductPrice` decimal(10,0) NOT NULL,
+    `QtyInStock` int(11) NOT NULL,
+    `Description` text COLLATE utf8mb4_general_ci NOT NULL,
+    `imgPath` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+    `Category` int(11) NOT NULL
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `vw_cat_2` exported as a table
+--
+DROP TABLE IF EXISTS `vw_cat_2`;
+CREATE TABLE`vw_cat_2`(
+    `ProductID` int(11) NOT NULL DEFAULT '0',
+    `ProductName` text COLLATE utf8mb4_general_ci NOT NULL,
+    `Discount` int(11) DEFAULT NULL,
+    `ProductPrice` decimal(10,0) NOT NULL,
+    `QtyInStock` int(11) NOT NULL,
+    `Description` text COLLATE utf8mb4_general_ci NOT NULL,
+    `imgPath` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+    `Category` int(11) NOT NULL
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `vw_cat_3` exported as a table
+--
+DROP TABLE IF EXISTS `vw_cat_3`;
+CREATE TABLE`vw_cat_3`(
+    `ProductID` int(11) NOT NULL DEFAULT '0',
+    `ProductName` text COLLATE utf8mb4_general_ci NOT NULL,
+    `Discount` int(11) DEFAULT NULL,
+    `ProductPrice` decimal(10,0) NOT NULL,
+    `QtyInStock` int(11) NOT NULL,
+    `Description` text COLLATE utf8mb4_general_ci NOT NULL,
+    `imgPath` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+    `Category` int(11) NOT NULL
+);
 
 --
 -- Indexes for dumped tables
@@ -215,13 +338,13 @@ ALTER TABLE `orderpayment`
 -- AUTO_INCREMENT for table `productcategory`
 --
 ALTER TABLE `productcategory`
-  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
