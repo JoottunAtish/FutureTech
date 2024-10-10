@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg p-3">
+<nav class="navbar navbar-expand-lg p-3 bg-white sticky-top">
     <a href="http://localhost:7777/futuretech/homepage.php" class="navbar-brand">
         <img src= "images\Logo\Logo.png" alt="Futuretech Logo" width="50" style="vertical-align:bottom">
     </a>

@@ -15,7 +15,7 @@ session_start();
     include "Essential_tags/Common_TAG.php";
     ?>
 
-    <!-- <script src="JS\live-search.js" async></script> -->
+    <script src="JS\live-search.js" async></script>
 
     <title>FutureTech - Homepage</title>
 </head>
@@ -34,21 +34,10 @@ session_start();
         </div>
     </div>
 
-
-    <!-- Search Feature -->
-    <!-- <div class="container">
-        <div class="search-container input-group mb-3">
-            <input id="live-search" type="text" class="form-control" placeholder="Search..." aria-label="Search">
-        </div>
-        <div class="search-display" class="list-group">
-            <!-- Query results will be displayed here -->
-    <!-- </div> -->
-    <!-- </div> -->
-
     <?php include "Forms\Search-function.php" ?>
 
-    <div class="card-container">
-
+    <div class="card-container m-4">
+        <?php include "Defaultcard\default_homecard.php"; ?>
     </div>
 
 
