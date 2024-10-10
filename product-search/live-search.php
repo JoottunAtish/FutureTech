@@ -12,14 +12,27 @@ if (isset($_POST['input'])) {
     $res->execute();
     $results = $res->fetchAll(PDO::FETCH_ASSOC);
 
+
     if ($res->rowCount() > 0) {
         foreach ($results as $result) {
 
             $pid = $result['ProductID'];
-            $Pname = $result['ProductName'];
-            $Pprice = $result['ProductPrice'];
-?>
-            <p><?php echo "$pid --> $Pname --> $Pprice"; ?></p>
+            $p_name = $result['ProductName'];
+            $p_des = $result["Description"];
+            $p_price = $result['ProductPrice'];
+            $p_img = $result['imgPath'];
+
+    ?>
+            <div class="card text-center mb-3" style="max-width: 300px;">
+                <img src="<?php echo $p_img; ?>" alt="<?php echo $p_name; ?>" class="card-img img-responsive">
+                <div class="card-body">
+                    <h4 class="card-title display-10 text-truncate"><?php echo $p_name; ?></h4>
+                    <p class="card-text text-truncate"><?php echo $p_des; ?></p>
+                    <p><?php echo "Rs. " . $p_price; ?></p>
+                    <button class="btn btn-primary">Go to page</button>
+                </div>
+            </div>
+
 <?php
         }
     } else {

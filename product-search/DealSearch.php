@@ -1,19 +1,15 @@
 <?php
 include "..\DB_CONNECTIONS\PDO_CONNECT.php";
-$limit = $_POST['input'];
-$generic_sql = "SELECT * FROM `products` ;";
+
+$generic_sql = "SELECT * FROM `products` WHERE Discount > 0;";
 
 $g_query = $conn->prepare($generic_sql);
 $g_query->execute();
 
 if ($g_query->rowCount() > 0) {
     $results = $g_query->fetchAll(PDO::FETCH_ASSOC);
-    $count = 0;
+
     foreach ($results as $res) {
-        // Limits the dislay to 5 items only
-        if ($count == $limit){
-            break;
-        }
         $pid = $res['ProductID'];
         $p_name = $res['ProductName'];
         $p_des = $res["Description"];
@@ -32,7 +28,6 @@ if ($g_query->rowCount() > 0) {
         </div>
 
 <?php
-        $count++;
 
     }
 } else {
