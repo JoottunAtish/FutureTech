@@ -24,7 +24,7 @@
                     if (password_verify($user_pwd, $result['Password'])){
                         $_SESSION["username"] = $result['UserName'];
                         $_SESSION["email"] = $result['Email'];
-                        header("Location: http://localhost:7777/futuretech/homepage.php");
+                        header("Location: homepage.php");
                         die();
                     } else{
                         $usr_err = "Error in email and password";

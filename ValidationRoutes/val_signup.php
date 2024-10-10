@@ -66,7 +66,7 @@
                         $query->execute();
 
                         if($query->rowCount() > 0){
-                            header("Location: http://localhost:7777/futuretech/homepage.php");
+                            header("Location: homepage.php");
                         }
                     }
                 }

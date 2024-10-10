@@ -25,7 +25,7 @@ if ($g_query->rowCount() > 0) {
         <div class="card text-center mb-3" style="max-width: 300px;">
             <img src="<?php echo $p_img; ?>" alt="<?php echo $p_name; ?>" class="card-img img-responsive">
             <div class="card-body">
-                <h4 class="card-title"><?php echo $p_name; ?></h4>
+                <h4 class="card-title text-truncate"><?php echo $p_name; ?></h4>
                 <p class="card-text text-truncate"><?php echo $p_des; ?></p>
                 <p><?php echo "Rs. " . $p_price; ?></p>
                 <button class="btn btn-primary">Go to page</button>

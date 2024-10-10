@@ -36,10 +36,8 @@ session_start();
 
     <?php include "Forms\Search-function.php" ?>
 
-    <div class="card-container m-4 live-searh-default">
-        <?php 
-        //include "Defaultcard\default_homecard.php"; 
-        ?>
+
+    <div class="card-container m-4 live-search-default">
     </div>
 
 </body>

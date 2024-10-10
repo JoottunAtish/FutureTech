@@ -3,11 +3,12 @@ $(document).ready(function () {
     var deal_limit = 3;
     $(".search-display").html("");
     $.ajax({
-        url: "http://localhost:7777/futuretech/Defaultcard/default_homecard.php",
+        url: "../../futuretech/Defaultcard/default_homecard.php",
         method: "POST",
         data: { all: All_limit, deal: deal_limit },
         success: function (data) {
-            $(".live-searh-default").html(data);
+            document.getElementById('search-display-header').style.visibility = 'hidden';
+            $(".live-search-default").html(data);
         }
     });
 
@@ -18,24 +19,26 @@ $(document).ready(function () {
 
         if (input != "") {
             $.ajax({
-                url: "http://localhost:7777/futuretech/product-search/live-search.php",
+                url: "../../futuretech/product-search/live-search.php",
                 method: "POST",
                 data: { input: input },
 
                 success: function (data) {
+                    document.getElementById('search-display-header').style.visibility = 'visible';
                     $(".search-display").html(data);
-                    $(".live-searh-default").html("");
+                    $(".live-search-default").html("");
                 }
             });
         } else {
             $(".search-display").html("");
             $.ajax({
-                url: "http://localhost:7777/futuretech/Defaultcard/default_homecard.php",
+                url: "../../futuretech/Defaultcard/default_homecard.php",
                 method: "POST",
                 data: { all: All_limit, deal: deal_limit },
 
                 success: function (data) {
-                    $(".live-searh-default").html(data);
+                    $(".live-search-default").html(data);
+                    document.getElementById('search-display-header').style.visibility = 'hidden';
                 }
             });
         }
