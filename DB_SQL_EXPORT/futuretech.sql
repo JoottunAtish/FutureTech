@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2024 at 12:56 PM
+-- Generation Time: Oct 10, 2024 at 01:26 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -216,53 +216,29 @@ CREATE TABLE `vw_cat_3` (
 -- --------------------------------------------------------
 
 --
--- Structure for view `vw_cat_1` exported as a table
+-- Structure for view `vw_cat_1`
 --
 DROP TABLE IF EXISTS `vw_cat_1`;
-CREATE TABLE`vw_cat_1`(
-    `ProductID` int(11) NOT NULL DEFAULT '0',
-    `ProductName` text COLLATE utf8mb4_general_ci NOT NULL,
-    `Discount` int(11) DEFAULT NULL,
-    `ProductPrice` decimal(10,0) NOT NULL,
-    `QtyInStock` int(11) NOT NULL,
-    `Description` text COLLATE utf8mb4_general_ci NOT NULL,
-    `imgPath` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-    `Category` int(11) NOT NULL
-);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_cat_1`  AS SELECT `products`.`ProductID` AS `ProductID`, `products`.`ProductName` AS `ProductName`, `products`.`Discount` AS `Discount`, `products`.`ProductPrice` AS `ProductPrice`, `products`.`QtyInStock` AS `QtyInStock`, `products`.`Description` AS `Description`, `products`.`imgPath` AS `imgPath`, `productcategory`.`Category` AS `Category` FROM (`products` join `productcategory` on(`products`.`ProductID` = `productcategory`.`ProductID`)) WHERE `productcategory`.`Category` = 1 ;
 
 -- --------------------------------------------------------
 
 --
--- Structure for view `vw_cat_2` exported as a table
+-- Structure for view `vw_cat_2`
 --
 DROP TABLE IF EXISTS `vw_cat_2`;
-CREATE TABLE`vw_cat_2`(
-    `ProductID` int(11) NOT NULL DEFAULT '0',
-    `ProductName` text COLLATE utf8mb4_general_ci NOT NULL,
-    `Discount` int(11) DEFAULT NULL,
-    `ProductPrice` decimal(10,0) NOT NULL,
-    `QtyInStock` int(11) NOT NULL,
-    `Description` text COLLATE utf8mb4_general_ci NOT NULL,
-    `imgPath` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-    `Category` int(11) NOT NULL
-);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_cat_2`  AS SELECT `products`.`ProductID` AS `ProductID`, `products`.`ProductName` AS `ProductName`, `products`.`Discount` AS `Discount`, `products`.`ProductPrice` AS `ProductPrice`, `products`.`QtyInStock` AS `QtyInStock`, `products`.`Description` AS `Description`, `products`.`imgPath` AS `imgPath`, `productcategory`.`Category` AS `Category` FROM (`products` join `productcategory` on(`products`.`ProductID` = `productcategory`.`ProductID`)) WHERE `productcategory`.`Category` = 2 ;
 
 -- --------------------------------------------------------
 
 --
--- Structure for view `vw_cat_3` exported as a table
+-- Structure for view `vw_cat_3`
 --
 DROP TABLE IF EXISTS `vw_cat_3`;
-CREATE TABLE`vw_cat_3`(
-    `ProductID` int(11) NOT NULL DEFAULT '0',
-    `ProductName` text COLLATE utf8mb4_general_ci NOT NULL,
-    `Discount` int(11) DEFAULT NULL,
-    `ProductPrice` decimal(10,0) NOT NULL,
-    `QtyInStock` int(11) NOT NULL,
-    `Description` text COLLATE utf8mb4_general_ci NOT NULL,
-    `imgPath` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-    `Category` int(11) NOT NULL
-);
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_cat_3`  AS SELECT `products`.`ProductID` AS `ProductID`, `products`.`ProductName` AS `ProductName`, `products`.`Discount` AS `Discount`, `products`.`ProductPrice` AS `ProductPrice`, `products`.`QtyInStock` AS `QtyInStock`, `products`.`Description` AS `Description`, `products`.`imgPath` AS `imgPath`, `productcategory`.`Category` AS `Category` FROM (`products` join `productcategory` on(`products`.`ProductID` = `productcategory`.`ProductID`)) WHERE `productcategory`.`Category` = 3 ;
 
 --
 -- Indexes for dumped tables
