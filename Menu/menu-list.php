@@ -22,7 +22,7 @@
             </li>
         </ul>
 
-        <div class="">
+        <div class="navbar">
             <?php
             if (isset($_SESSION["username"]) && !empty($_SESSION["username"])) {
             ?>

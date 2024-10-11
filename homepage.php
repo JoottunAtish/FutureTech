@@ -24,10 +24,6 @@ session_start();
     include "Menu\menu-list.php";
     ?>
 
-    <!-- Adding a search feature -->
-    <!-- Hero Section -->
-
-
     <?php include "Forms\Search-function.php" ?>
 
 

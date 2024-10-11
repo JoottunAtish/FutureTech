@@ -1,5 +1,5 @@
 <?php
-include("..\DB_CONNECTIONS\PDO_CONNECT.php");
+include("../DB_CONNECTIONS/PDO_CONNECT.php");
 
 if (isset($_POST['input'])) {
     $user_in = $_POST['input'];
