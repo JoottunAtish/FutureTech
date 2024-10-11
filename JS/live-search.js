@@ -1,11 +1,12 @@
 $(document).ready(function () {
-    var All_limit = 9;
-    var deal_limit = 3;
     $(".search-display").html("");
+    const deal_limit = 5;
+    const all_limit = 10;
+    
     $.ajax({
         url: "../../futuretech/Defaultcard/default_homecard.php",
         method: "POST",
-        data: { all: All_limit, deal: deal_limit },
+        data: { all: all_limit, deal: deal_limit },
         success: function (data) {
             document.getElementById('search-display-header').style.visibility = 'hidden';
             $(".live-search-default").html(data);
@@ -13,6 +14,7 @@ $(document).ready(function () {
     });
 
     $("#live-search").keyup(function () {
+        console.log("reached");
 
         var input = $(this).val();
         // alert(input);
@@ -34,7 +36,7 @@ $(document).ready(function () {
             $.ajax({
                 url: "../../futuretech/Defaultcard/default_homecard.php",
                 method: "POST",
-                data: { all: All_limit, deal: deal_limit },
+                data: { all: all_limit, deal: deal_limit },
 
                 success: function (data) {
                     $(".live-search-default").html(data);

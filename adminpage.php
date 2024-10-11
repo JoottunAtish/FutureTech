@@ -8,13 +8,18 @@
         include "Essential_tags/AJAX_TAG.php";
         include "Essential_tags/Common_TAG.php";
 
-        include "ValidationRoutes\\val_fileupload.php";
+        // include "ValidationRoutes/val_admin.php";
+
+        $err_msg = "";
+        $success_msg = "";
+
+        include "ValidationRoutes\\val_add.php";
     ?>
 
 </head>
 <body>
     <h1>ADMIN PAGE</h1> 
 
-    <?php include "Forms/File-upload-form.php"; ?>
+    <?php include "Forms/admin-addProduct.php"; ?>
 </body>
 </html>

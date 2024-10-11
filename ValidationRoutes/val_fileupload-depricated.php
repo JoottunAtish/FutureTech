@@ -13,18 +13,18 @@
         $file_actual_ext = strtolower(end($file_ext));
         
         $allow_type = ["png", 'jpg', 'jpeg'];
+        $file_newname = $file['name'];
+        $file_dest = "Uploads/IMG/" . $file_newname;
         
         if (in_array($file_actual_ext, $allow_type)){
             if ($file_error === 0) {
                 if ($file_size < 1000000) {
-                    $file_newname = $file['name'];
 
-                    $file_dest = "Uploads/IMG/" . $file_newname;
                     if (!file_exists($file_dest)){
                         move_uploaded_file($file_tmpname, $file_dest);
                         $success_msg = "File Uploaded!!";
                     } else {
-                    $err_msg = "Error: File Already exit";
+                    $err_msg = "Error: File Already exist";
                         
                     }
 

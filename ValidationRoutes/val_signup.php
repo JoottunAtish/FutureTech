@@ -1,6 +1,6 @@
 <?php
     session_start();
-
+    
     include "DB_CONNECTIONS\PDO_CONNECT.php";
 
     $pwd_err = "";

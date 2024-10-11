@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg p-3 bg-white sticky-top">
+<nav class="navbar navbar-expand-lg p-3 bg-light sticky-top">
     <a href="../../futuretech/homepage.php" class="navbar-brand">
         <img src="../../futuretech/images/Logo/Logo.png" alt="Futuretech Logo" width="50" style="vertical-align:bottom">
     </a>
@@ -14,11 +14,11 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="../../futuretech/Menu/pre-builts.php">Pre-Built Computers</a>
+                <a class="nav-link active" href="../../futuretech/Menu/pre-builts.php">Pre-Built Computers</a>
             </li>
 
             <li>
-                <a class="nav-link" href="../../futuretech/Menu/accessories.php">Computer Accessories</a>
+                <a class="nav-link active" href="../../futuretech/Menu/accessories.php">Computer Accessories</a>
             </li>
         </ul>
 
@@ -29,12 +29,12 @@
                 <?php
 
                 ?>
-                <a class="nav-link" href="account.php"> <?php echo htmlspecialchars($_SESSION['username']); ?></a>
+                <a class="nav-link" href="../../futuretech/account.php"> <?php echo htmlspecialchars($_SESSION['username']); ?></a>
 
             <?php
             } else {
             ?>
-                <a class="nav-link" href="login.php">Sign-up/log-in</a>
+                <a class="nav-link" href="../../futuretech/login.php">Sign-up/log-in</a>
             <?php
             }
             ?>
