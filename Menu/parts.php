@@ -14,7 +14,7 @@
         include "../Essential_tags/Common_TAG.php";
      ?>
 
-    <script src="..\JS\live-search.js" async></script>
+    <script src="../../FutureTech/JS/parts-search.js" async></script>
     <title>FutureTech - Parts</title>
 </head>
 <body>
@@ -35,7 +35,7 @@
 
     <?php include "..\Forms\Search-function.php" ?>
 
-    <div class="card-container">
+    <div class="card-container m-4 live-search-default">
     </div>
 
 </body>

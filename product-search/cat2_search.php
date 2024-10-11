@@ -1,20 +1,14 @@
 <?php
 include "..\DB_CONNECTIONS\PDO_CONNECT.php";
 
-$generic_sql = "SELECT * FROM `products` ;";
+$generic_sql = "SELECT * FROM `products` WHERE Category = 2;";
 
 $g_query = $conn->prepare($generic_sql);
 $g_query->execute();
 
 if ($g_query->rowCount() > 0) {
     $results = $g_query->fetchAll(PDO::FETCH_ASSOC);
-    $count = 0;
     foreach ($results as $res) {
-        // Limits the dislay to limit-th times
-        if ($count == $limit){
-            break;
-        }
-        $count++;
 
         $pid = $res['ProductID'];
         $p_name = $res['ProductName'];
@@ -24,7 +18,7 @@ if ($g_query->rowCount() > 0) {
 
 ?>
         <div class="card text-center mb-3 col-12 col-sm-6 col-md-4 mb-4" style="max-width: 300px;">
-            <img src="<?php echo $p_img; ?>" alt="<?php echo $p_name; ?>" class="card-img img-responsive" style="max-width: 300px; max-height: 300px; overflow:hidden">
+            <img src="<?php echo "../../futuretech/" . $p_img; ?>" alt="<?php echo $p_name; ?>" class="card-img img-responsive" style="max-width: 300px; max-height: 300px; overflow:hidden">
             <div class="card-body">
                 <h4 class="card-title text-truncate"><?php echo $p_name; ?></h4>
                 <p class="card-text text-truncate"><?php echo $p_des; ?></p>
