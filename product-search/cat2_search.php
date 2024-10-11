@@ -23,7 +23,9 @@ if ($g_query->rowCount() > 0) {
                 <h4 class="card-title text-truncate"><?php echo $p_name; ?></h4>
                 <p class="card-text text-truncate"><?php echo $p_des; ?></p>
                 <p><?php echo "Rs. " . $p_price; ?></p>
-                <button class="btn btn-primary">Go to page</button>
+                <form action="../../FutureTech/productpage.php" method="POST">
+                    <button name="pid" value="<?php echo $pid ?>" class="btn btn-primary">Go to page</button>
+                </form>
             </div>
         </div>
 

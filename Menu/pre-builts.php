@@ -22,16 +22,6 @@ session_start();
     ?>
 
     <!-- Adding a search feature -->
-    <!-- Hero Section -->
-    <div class="container d-flex justify-content-center align-items-center">
-        <div class="text-center">
-            <h1>Welcome to FutureTech</h1>
-            <p>Empowering the Future with Technology</p>
-        </div>
-    </div>
-
-
-    <!-- Adding a search feature -->
     <?php include "..\Forms\Search-function.php" ?>
 
     <div class="card-container m-4 live-search-default">

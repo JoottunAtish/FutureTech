@@ -1,3 +1,10 @@
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="text-center">
+        <h1 class="display-1">Welcome to FutureTech</h1>
+        <p class="display-md">Empowering the Future with Technology</p>
+    </div>
+</div>
+
 <!-- Search Feature -->
 <div class="container">
     <div class="search-container input-group mb-3">
@@ -5,9 +12,9 @@
     </div>
     <div>
         <h4 id="search-display-header" style="visibility: hidden;" class="p-2 display-6"><strong>Search Result...</strong></h1>
-        <div class="search-display d-flex gap-4 flex-wrap justify-content-center" class="list-group">
-            <!-- Query results will be displayed here -->
-        </div>
+            <div class="search-display d-flex gap-4 flex-wrap justify-content-center" class="list-group">
+                <!-- Query results will be displayed here -->
+            </div>
 
     </div>
 
