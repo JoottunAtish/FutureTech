@@ -20,16 +20,14 @@ session_start();
 </head>
 
 <body>
+
     <?php
     include "Menu\menu-list.php";
+    include "Forms\Search-function.php";
     ?>
-
-    <?php include "Forms\Search-function.php" ?>
-
-
+    <!-- Display Default cards -->
     <div class="card-container m-4 live-search-default">
     </div>
 
 </body>
-
 </html>

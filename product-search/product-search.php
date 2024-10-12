@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $p_name = $result['ProductName'];
         $p_des = $result["Description"];
         $p_price = $result['ProductPrice'];
-        $p_img = filter_var($result['imgPath'], FILTER_SANITIZE_URL);
+        $p_img = $result['imgPath'];
         $p_qty = $result['QtyInStock'];
         $full_path = "../../futuretech/" . $p_img;
 
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <div class="container">
             <div class="row">
-                <img class="col" src=<?php echo $full_path; ?> alt="keyboard" style="max-width: 600px;">
+                <img class="col" src="<?php echo $full_path; ?>" alt="keyboard" style="max-width: 600px;">
 
                 <div class="col">
                     <h3 class="display-6"><?php echo $p_name; ?></h3>

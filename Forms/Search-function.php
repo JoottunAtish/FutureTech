@@ -15,8 +15,5 @@
             <div class="search-display d-flex gap-4 flex-wrap justify-content-center" class="list-group">
                 <!-- Query results will be displayed here -->
             </div>
-
     </div>
-
-
 </div>
