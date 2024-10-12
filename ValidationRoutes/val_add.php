@@ -1,26 +1,11 @@
 <?php
-session_start();
+//session_start();
 include "DB_CONNECTIONS/PDO_ADMIN_CONNECT.php";
 
 $upload_err = "";
 
-if (!(isset($_SESSION['Pname']))) {
-    $_SESSION['Pname'] = "";
-    $_SESSION['Pdesc'] = "";
-    $_SESSION['Pprice'] = "";
-    $_SESSION['Pdiscount'] = "";
-    $_SESSION['Pqty'] = "";
-    $_SESSION['Pcat'] = "";
-}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $_SESSION['Pname'] = $_POST['pname'];
-    $_SESSION['Pdesc'] = $_POST['pdesc'];
-    $_SESSION['Pprice'] = $_POST['pprice'];
-    $_SESSION['Pdiscount'] = $_POST['pdiscount'];
-    $_SESSION['Pqty'] = $_POST['pqty'];
-    $_SESSION['Pcat'] = $_POST['pcat'];
-
 
     $name = filter_var($_POST['pname'], FILTER_SANITIZE_ADD_SLASHES);
     $desc = filter_var($_POST['pdesc'], FILTER_SANITIZE_ADD_SLASHES);

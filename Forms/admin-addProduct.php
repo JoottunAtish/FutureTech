@@ -1,3 +1,7 @@
+<?php
+    include "ValidationRoutes/val_add.php";
+?>
+
 <form class="p-3 m-4 col-10" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" enctype="multipart/form-data">
 
     <h3 class="display-4 m-4">Enter Product</h3>

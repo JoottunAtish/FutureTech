@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FutureTech - Admin Page</title>
     <?php
+
         include "Essential_tags/AJAX_TAG.php";
         include "Essential_tags/Common_TAG.php";
 
@@ -13,13 +17,17 @@
         $err_msg = "";
         $success_msg = "";
 
-        include "ValidationRoutes\\val_add.php";
+        // Can be removed!
+        // include "ValidationRoutes/val_add.php";
     ?>
 
 </head>
 <body>
     <h1>ADMIN PAGE</h1> 
 
-    <?php include "Forms/admin-addProduct.php"; ?>
+    <?php
+    // include "Forms/admin-addAdmin.php";
+    include "Forms/admin-addProduct.php";
+    ?>
 </body>
 </html>

@@ -14,7 +14,6 @@ $(document).ready(function () {
     });
 
     $("#live-search").keyup(function () {
-        console.log("reached");
 
         var input = $(this).val();
         // alert(input);

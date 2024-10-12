@@ -30,7 +30,7 @@ if ($g_query->rowCount() > 0) {
             <div class="card-body">
                 <h4 class="card-title text-truncate"><?php echo $p_name; ?></h4>
                 <p class="card-text text-truncate"><?php echo $p_des; ?></p>
-                <p><strike><?php echo "Rs. " . $p_price; ?></strike> <?php echo "Rs. " . $p_price * ($p_discount/100); ?></p>
+                <p><strike><?php echo "Rs. " . $p_price; ?></strike> <?php echo "Rs. " . $p_price * ((100 - $p_discount)/100); ?></p>
                 <form action="../../FutureTech/productpage.php" method="POST">
                     <button name="pid" value="<?php echo $pid ?>" class="btn btn-primary">Go to page</button>
                 </form>

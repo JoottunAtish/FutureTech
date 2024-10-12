@@ -70,23 +70,8 @@
                         }
                     }
                 }
-
-
-
-
             }
-    
+
         }
-        // Hash the password.
-        // First verify if the email and username exist in DB
-
-        // DOES EXIST.
-            // Display an error saying that the user already exist.
-        
-        // DOES NOT EXIST
-            // Add the user to the DB and redirect to homepage.
     }
-
-
-
 ?>
