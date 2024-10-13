@@ -16,7 +16,7 @@
 
         $pwd_1 = $_POST['pass_1'];
         $pwd_2 = $_POST['pass_2'];
-        $role = $_SESSION['role'];
+        $role = $_POST['role'];
 
 
         $_SESSION["username"] = $username;
@@ -48,7 +48,7 @@
                         $query->execute();
 
                         if($query->rowCount() > 0){
-                            header("Location: homepage.php");
+                            header("Location: adminpage.php");
                         }
                     }
                 }

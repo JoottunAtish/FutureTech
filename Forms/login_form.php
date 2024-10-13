@@ -1,3 +1,9 @@
+<?php
+    if (!isset($_SESSION['email'])) {
+        $_SESSION['email'] = "";
+    }
+
+?>
 <div class="container min-vh-100 d-flex justify-content-center align-items-center">
 
 <div class="mb-3 col-md-3">
@@ -8,7 +14,7 @@
         </div>
         
         <div class="form-floating col-12">
-            <input class="form-control" type="email" name="username" id="user" placeholder="E-mail" required>
+            <input class="form-control" type="email" name="email" id="user" placeholder="E-mail" value="<?php echo $_SESSION['email'] ?>" required>
             <label for="user">Email Address</label>
         </div>
         <!-- to auto fill add the value param in the input tag -->
