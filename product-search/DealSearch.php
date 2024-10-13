@@ -9,7 +9,6 @@ $g_query->execute();
 // If deal exist
 if ($g_query->rowCount() > 0) {
     $results = $g_query->fetchAll(PDO::FETCH_ASSOC);
-
     foreach ($results as $res) {
 
         $pid = $res['ProductID'];
@@ -25,7 +24,7 @@ if ($g_query->rowCount() > 0) {
             <div class="card-body">
                 <h4 class="card-title text-truncate"><?php echo $p_name; ?></h4>
                 <p class="card-text text-truncate"><?php echo $p_des; ?></p>
-                <p><strike><?php echo "Rs. " . $p_price; ?></strike> <?php echo "Rs. " . $p_price * ((100 - $p_discount)/100); ?></p>
+                <p><?php include "price_display.php" ?></p>
                 <form action="../../FutureTech/productpage.php" method="POST">
                     <button name="pid" value="<?php echo $pid ?>" class="btn btn-primary">Go to page</button>
                 </form>

@@ -36,6 +36,7 @@ if (isset($_POST['input'])) {
             $p_des = $result["Description"];
             $p_price = $result['ProductPrice'];
             $p_img = $result['imgPath'];
+            $p_discount = $result['Discount'];
 
 ?>
             <div class="card text-center mb-3" style="max-width: 300px;">
@@ -43,7 +44,7 @@ if (isset($_POST['input'])) {
                 <div class="card-body">
                     <h4 class="card-title display-10 text-truncate"><?php echo $p_name; ?></h4>
                     <p class="card-text text-truncate"><?php echo $p_des; ?></p>
-                    <p><?php echo "Rs. " . $p_price; ?></p>
+                    <p><?php include "price_display.php" ?></p>
                     <form action="../../FutureTech/productpage.php" method="POST">
                         <button name="pid" value="<?php echo $pid ?>" class="btn btn-primary">Go to page</button>
                     </form>

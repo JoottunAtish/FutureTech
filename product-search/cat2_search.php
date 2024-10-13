@@ -15,6 +15,7 @@ if ($g_query->rowCount() > 0) {
         $p_des = $res["Description"];
         $p_price = $res['ProductPrice'];
         $p_img = $res['imgPath'];
+        $p_discount = $res['Discount'];
 
 ?>
         <div class="card text-center mb-3 col-12 col-sm-6 col-md-4 mb-4" style="max-width: 300px;">
@@ -22,7 +23,7 @@ if ($g_query->rowCount() > 0) {
             <div class="card-body">
                 <h4 class="card-title text-truncate"><?php echo $p_name; ?></h4>
                 <p class="card-text text-truncate"><?php echo $p_des; ?></p>
-                <p><?php echo "Rs. " . $p_price; ?></p>
+                <p><?php include "price_display.php" ?></p>
                 <form action="../../FutureTech/productpage.php" method="POST">
                     <button name="pid" value="<?php echo $pid ?>" class="btn btn-primary">Go to page</button>
                 </form>
