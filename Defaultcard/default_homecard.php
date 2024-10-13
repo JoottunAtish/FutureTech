@@ -4,7 +4,7 @@
     
     <div class="container-fluid d-flex gap-4 flex-wrap justify-content-center">
         <?php
-        $limit = $_POST['deal'];
+
         include "../../futuretech/product-search/DealSearch.php";
         ?>
     </div>
@@ -17,8 +17,7 @@
     <div class="row">
         <div class="container-fluid d-flex gap-4 flex-wrap justify-content-center">
             <?php
-            $limit = $_POST['all'];
-            // limits the display search
+
             include "../../futuretech/product-search/GenericSearch.php";
             ?>
         </div>

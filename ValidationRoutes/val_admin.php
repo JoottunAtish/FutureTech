@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include "DB_CONNECTIONS/PDO_CONNECT.php";
 
 if (!isset($_SESSION["email"])) {

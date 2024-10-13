@@ -1,8 +1,6 @@
 $(document).ready(function () {
     $(".search-display").html("");
-    const deal_limit = 5;
-    const all_limit = 10;
-    
+
     $.ajax({
         url: "../../futuretech/Defaultcard/default_homecard.php",
         method: "POST",
@@ -35,7 +33,7 @@ $(document).ready(function () {
             $.ajax({
                 url: "../../futuretech/Defaultcard/default_homecard.php",
                 method: "POST",
-                data: { all: all_limit, deal: deal_limit },
+                data: {},
 
                 success: function (data) {
                     $(".live-search-default").html(data);

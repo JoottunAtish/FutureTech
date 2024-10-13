@@ -9,13 +9,8 @@ $g_query->execute();
 // If deal exist
 if ($g_query->rowCount() > 0) {
     $results = $g_query->fetchAll(PDO::FETCH_ASSOC);
-    $count = 0;
+
     foreach ($results as $res) {
-        // Limit display search
-        if ($count == $limit){
-            break;
-        }
-        $count++;
 
         $pid = $res['ProductID'];
         $p_name = $res['ProductName'];

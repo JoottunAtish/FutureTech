@@ -1,5 +1,4 @@
 <?php
-    session_start();
     include "DB_CONNECTIONS\PDO_CONNECT.php";
     $usr_err = "";
 

@@ -8,5 +8,4 @@ function togglepass() {
             field.type = "password";
         }
     });
-
 }

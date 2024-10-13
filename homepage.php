@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +18,7 @@ session_start();
 <body>
 
     <?php
-    include "Menu\menu-list.php";
+    include "Menu\menu-list.php";    
     include "Forms\Search-function.php";
     ?>
     <!-- Display Default cards -->

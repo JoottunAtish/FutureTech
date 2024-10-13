@@ -8,13 +8,9 @@ $g_query->execute();
 
 if ($g_query->rowCount() > 0) {
     $results = $g_query->fetchAll(PDO::FETCH_ASSOC);
-    $count = 0;
+
     foreach ($results as $res) {
-        // Limits the dislay to limit-th times
-        if ($count == $limit){
-            break;
-        }
-        $count++;
+
 
         $pid = $res['ProductID'];
         $p_name = $res['ProductName'];

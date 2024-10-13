@@ -1,5 +1,4 @@
 <?php
-    session_start();
     
     include "DB_CONNECTIONS\PDO_CONNECT.php";
 
@@ -35,7 +34,7 @@
         $_SESSION["phone"] = $phone;
 
         // Verify the passwords.
-        if (!preg_match("/^[a-zA-Z0-9\W]{6,}$/", "123456")){
+        if (!preg_match("/^[a-zA-Z0-9\W]{6,}$/", $pwd_1)){
             $pwd_err = "Password is not secure enough. Please has atleast 6 characters!!";
         } else{
 

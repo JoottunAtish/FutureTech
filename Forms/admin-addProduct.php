@@ -15,7 +15,7 @@
     <!-- Product Description -->
     <div class="form-group m-4">
         <label for="pname">Product Description</label>
-        <textarea class="form-control" name="pdesc" id="pdesc" placeholder="Enter product Description..." rows="4" required></textarea>
+        <textarea class="form-control" name="pdesc" id="pdesc" placeholder="Enter product Description..." rows="4" style="height: 200px;" required></textarea>
     </div>
 
 
