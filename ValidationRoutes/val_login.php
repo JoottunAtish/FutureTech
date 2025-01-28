@@ -42,7 +42,7 @@
                         if (password_verify($user_pwd, $result['Password'])){
                             $_SESSION["username"] = $result['AdminName'];
                             $_SESSION["email"] = $result['Email'];
-                            header("Location: http://localhost:7777/futuretech/adminpage.php");
+                            header("Location: adminpage.php");
                             die();
                         }else{
                             $usr_err = "Error in email and password";

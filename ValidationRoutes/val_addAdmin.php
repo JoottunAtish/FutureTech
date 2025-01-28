@@ -10,7 +10,7 @@
         
     }
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    if ($_SERVER["REQUEST_METHOD"] == "POST" & isset($_POST['email'])){
         $email = $_POST['email'];
         $username = $_POST['adminname'];
 

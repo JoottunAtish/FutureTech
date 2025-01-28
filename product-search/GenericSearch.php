@@ -1,5 +1,5 @@
 <?php
-include "..\DB_CONNECTIONS\PDO_CONNECT.php";
+include "DB_CONNECTIONS/PDO_CONNECT.php";
 
 $generic_sql = "SELECT * FROM `products` ;";
 
@@ -20,7 +20,7 @@ if ($g_query->rowCount() > 0) {
         $p_discount = $res['Discount'];
 
 ?>
-        <div class="card text-center mb-3 col-12 col-sm-6 col-md-4 mb-4" style="max-width: 300px;">
+        <div class="card text-center mb-3 col-12 col-sm-6 col-md-4 mb-4 " style="max-width: 300px;">
             <img src="<?php echo $p_img; ?>" alt="<?php echo $p_name; ?>" class="card-img img-responsive" style="max-width: 300px; max-height: 300px; overflow:hidden">
             <div class="card-body">
                 <h4 class="card-title text-truncate"><?php echo $p_name; ?></h4>
@@ -33,8 +33,6 @@ if ($g_query->rowCount() > 0) {
         </div>
 
 <?php
-        
-
     }
 } else {
     echo '<p class="txt-danger">Empty</p>';

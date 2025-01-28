@@ -1,5 +1,5 @@
 <?php
-include "DB_CONNECTIONS/PDO_ADMIN_CONNECT.php";
+include "DB_CONNECTIONS\PDO_ADMIN_CONNECT.php";
 
 $upload_err = "";
 
@@ -22,11 +22,11 @@ $file_actual_ext = "";
 
 $allow_type = "";
 $file_newname =
-    $file_dest = "";
+$file_dest = "";
 
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' & isset($_POST['pname'])) {
 
     $name = filter_var($_POST['pname'], FILTER_SANITIZE_ADD_SLASHES);
     $desc = filter_var($_POST['pdesc'], FILTER_SANITIZE_ADD_SLASHES);
