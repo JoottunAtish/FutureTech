@@ -4,7 +4,7 @@ Our website is built in such a way that each components like the navigation bar,
 
 Additional, you will only have access to the admin part of the website if you log in with an admin credentials.
 
-## Steps required to start the Website:
+## Files required to start the Website:
 You need to create the PDO Connections for the General user and ADMIN part. In the Root Folder, create a directory called, `DB_CONNECTIONS` and inside create 2 files called, `PDO_CONNECT.php` and `PDO_ADMIN_CONNECT.php`.
 
 Inside `PDO_CONNECT.php` (which is for the General User)
