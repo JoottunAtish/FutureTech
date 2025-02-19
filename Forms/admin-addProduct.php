@@ -9,13 +9,13 @@
     <!-- Product Name -->
     <div class="form-group m-4">
         <label for="pname">Product Name</label>
-        <textarea class="form-control" name="pname" id="pname" placeholder="Enter product Name..." rows="2" required></textarea>
+        <textarea class="form-control" name="pname" id="pname" placeholder="Enter product Name..." rows="2" required><?php echo $name; ?></textarea>
     </div>
 
     <!-- Product Description -->
     <div class="form-group m-4">
         <label for="pname">Product Description</label>
-        <textarea class="form-control" name="pdesc" id="pdesc" placeholder="Enter product Description..." rows="4" style="height: 200px;" required></textarea>
+        <textarea class="form-control" name="pdesc" id="pdesc" placeholder="Enter product Description..." rows="4" style="height: 200px;" required><?php echo $desc;?></textarea>
     </div>
 
 
@@ -26,7 +26,7 @@
                 <label for="pprice" class="col-4 col-form-label">Product Price</label>
                 <div class="col input-group">
                     <div class="input-group-text">Rs</div>
-                    <input class="form-control" type="text" name="pprice" id="pprice" placeholder="Enter Product Price..." required>
+                    <input class="form-control" type="text" name="pprice" id="pprice" placeholder="Enter Product Price..." required value="<?php echo $price; ?>">
                 </div>
             </div>
 
@@ -34,7 +34,7 @@
             <div class="form-group row col-12 col-md-6">
                 <label for="pdiscount" class="col-4 col-form-label">Product discount</label>
                 <div class="col input-group">
-                    <input class="form-control" type="text" name="pdiscount" id="pdiscount" placeholder="Enter Product Discount(if any)...">
+                    <input class="form-control" type="text" name="pdiscount" id="pdiscount" placeholder="Enter Product Discount(if any)..." required value="<?php echo $discount; ?>">
                     <div class="input-group-text">%</div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
             <div class="form-group row col-12 col-md-6">
                 <label for="pqty" class="col-4 col-form-label">Product Quantity</label>
                 <div class="col">
-                    <input class="form-control" type="text" name="pqty" id="pqty" placeholder="Enter Product Quantity..." required>
+                    <input class="form-control" type="text" name="pqty" id="pqty" placeholder="Enter Product Quantity..." required value="<?php echo $qty; ?>">
                 </div>
             </div>
 
@@ -58,7 +58,7 @@
             <div class="form-group row col-12 col-md-6">
                 <label for="pcat" class="col-4 col-form-label">Choose Category</label>
                 <div class="col">
-                    <select name="pcat" id="pcat" class="form-control" required>
+                    <select name="pcat" id="pcat" class="form-control" required value="<?php echo $cat; ?>">
                         <option>-- Select --</option>
                         <option value="1">PC-Parts</option>
                         <option value="2">Pre-Built PC</option>

@@ -72,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' & isset($_POST['pname'])) {
 
                         if ($insert_query->rowCount() > 0) {
                             $success_msg = "File Uploaded!!";
+                            header("Location: adminpage.php");
                         } else {
                             unlink($file_dest);
                             $upload_err = "Error Could Not update database!!";

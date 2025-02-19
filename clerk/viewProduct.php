@@ -11,6 +11,15 @@ while ($row = $stmt->fetch()) {
     $desp = $row['Description'];
     $imgPath = $row['imgPath'];
     $cat = $row['Category'];
+    $qty = $row['QtyInStock'];
+
+    if ($cat == 1) {
+        $cat = "PC Parts";
+    } else if ($cat == 2) {
+        $cat = "Pre-Built Desktops";
+    } else if ($cat == 3) {
+        $cat = "Accessories";
+    }
 
 ?>
     <div class="d-flex gap-4 p-3 m-2 border border-2 rounded">
@@ -22,6 +31,8 @@ while ($row = $stmt->fetch()) {
                 <h3><?php echo $name; ?></h3>
                 <p><?php echo $desp; ?></p>
                 <h4>Rs. <?php echo number_format($price, 2, ".", ",");  ?></h4>
+                <p><strong>Category:</strong> <?php echo $cat; ?></p>
+                <p><strong>Quantity:</strong> <?php echo $qty; ?></p>
             </div>
             <div>
                 <a href="clerk/modifyProduct.php?id=<?php echo $id; ?>">

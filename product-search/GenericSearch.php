@@ -1,5 +1,6 @@
 <?php
-include "DB_CONNECTIONS/PDO_CONNECT.php";
+include "../DB_CONNECTIONS/PDO_CONNECT.php";
+
 
 $generic_sql = "SELECT * FROM `products` ;";
 
@@ -26,7 +27,7 @@ if ($g_query->rowCount() > 0) {
                 <h4 class="card-title text-truncate"><?php echo $p_name; ?></h4>
                 <p class="card-text text-truncate"><?php echo $p_des; ?></p>
                 <p><?php include "price_display.php" ?></p>
-                <form action="../../FutureTech/productpage.php" method="POST">
+                <form action="../../FutureTech/productpage.php" method="GET">
                     <button name="pid" value="<?php echo $pid ?>" class="btn btn-primary">Go to page</button>
                 </form>
             </div>

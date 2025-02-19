@@ -35,7 +35,6 @@
         </div>
         <div class="tab-pane fade" id="nav-admin" role="tabpanel" aria-labelledby="nav-admin-tab">
             <?php include "Forms/admin-addAdmin.php"; ?>
-
         </div>
         <div class="tab-pane fade show active" id="nav-viewProduct" role="tabpanel" aria-labelledby="nav-viewProduct-tab">
             <?php include "clerk/viewProduct.php" ?>

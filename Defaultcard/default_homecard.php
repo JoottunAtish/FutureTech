@@ -5,7 +5,7 @@
     <div class="container-fluid d-flex gap-4 flex-wrap justify-content-center">
         <?php
 
-        include "product-search/DealSearch.php";
+        include "../product-search/DealSearch.php";
         ?>
     </div>
 </div>
@@ -18,7 +18,7 @@
         <div class="container-fluid d-flex gap-4 flex-wrap justify-content-center">
             <?php
 
-            include "product-search/GenericSearch.php";
+            include "../product-search/GenericSearch.php";
             ?>
         </div>
     </div>

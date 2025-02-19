@@ -20,7 +20,7 @@
     <?php
     include "Menu\menu-list.php";    
     include "Forms\Search-function.php";
-    include "Defaultcard\default_homecard.php";
+    // include "Defaultcard\default_homecard.php";
     ?>
     <!-- Display Default cards -->
 

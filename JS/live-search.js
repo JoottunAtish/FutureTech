@@ -1,10 +1,12 @@
+
+
 $(document).ready(function () {
     $(".search-display").html("");
 
     $.ajax({
         url: "../../futuretech/Defaultcard/default_homecard.php",
         method: "POST",
-        data: { all: all_limit, deal: deal_limit },
+        data: { all: 10, deal: 4 },
         success: function (data) {
             document.getElementById('search-display-header').style.visibility = 'hidden';
             $(".live-search-default").html(data);

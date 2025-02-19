@@ -1,8 +1,8 @@
 <?php
-include "DB_CONNECTIONS/PDO_CONNECT.php";
+include "DB_CONNECTIONS\PDO_CONNECT.php";
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $sql = "SELECT * FROM `products` WHERE ProductID = " . $conn->quote($_POST['pid']) . ";";
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    $sql = "SELECT * FROM `products` WHERE ProductID = " . $conn->quote($_GET['pid']) . ";";
 
     $query = $conn->prepare($sql);
     $query->execute();
