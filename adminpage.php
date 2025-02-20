@@ -20,6 +20,7 @@
 
 <body>
     <!-- <h1>ADMIN PAGE</h1>  -->
+     <?php include "Menu\admin-nav.php" ?>
 
     <nav class="m-3">
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -36,7 +37,7 @@
         <div class="tab-pane fade" id="nav-admin" role="tabpanel" aria-labelledby="nav-admin-tab">
             <?php include "Forms/admin-addAdmin.php"; ?>
         </div>
-        <div class="tab-pane fade show active" id="nav-viewProduct" role="tabpanel" aria-labelledby="nav-viewProduct-tab">
+        <div class="tab-pane fade show active p-2 m-1" id="nav-viewProduct" role="tabpanel" aria-labelledby="nav-viewProduct-tab">
             <?php include "clerk/viewProduct.php" ?>
         </div>
     </div>

@@ -80,6 +80,18 @@ CREATE TABLE `reviews` (
     FOREIGN KEY (`ProductID`) REFERENCES `products`(`ProductID`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+CREATE TABLE `cart` (
+    `CartID` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `CustomerID` INT(11) UNSIGNED NOT NULL,
+    `ProductID` INT(11) UNSIGNED NOT NULL,
+    `Quantity` INT(11) NOT NULL,
+    `PriceAtCart` DECIMAL(10, 2) NOT NULL,
+    `AddedDate` DATETIME NOT NULL DEFAULT current_timestamp(),
+    FOREIGN KEY (`CustomerID`) REFERENCES `customer`(`CustomerID`) ON DELETE CASCADE,
+    FOREIGN KEY (`ProductID`) REFERENCES `products`(`ProductID`) ON DELETE CASCADE
+);
+
+
 
 -- Sample Data (You would insert your actual data here)
 

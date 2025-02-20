@@ -4,18 +4,18 @@ include "../DB_CONNECTIONS/PDO_ADMIN_CONNECT.php";
 $imgPath = "";
 $max_file_size = 6 * 1024 * 1024;  // 6MB
 
-// The correct path to the 'Uploads/IMG' folder outside the current directory
-$upload_folder = "../Uploads/IMG/";
+// Set the file path upload folder
+$upload_folder = "Uploads/IMG/";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST)) {
-    // Receive the form data
+    
     $id = $_POST['pid'];
     $name = $_POST['pname'];
     $price = $_POST['pprice'];
     $discount = $_POST['pdiscount'];
     $qty = $_POST['pqty'];
     $cat = $_POST['pcat'];
-    $desc = $_POST['pdesc'];  // Assuming 'pdesc' is the correct field for the description.
+    $desc = $_POST['pdesc'];
 
     // Check if a file is uploaded
     $file = $_FILES['file-select'];
@@ -23,11 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST)) {
     $file_size = $file['size'];
     $file_error = $file['error'];
     $file_type = $file['type'];
-
-    // Debugging the $_FILES array
-    print_r($_FILES);  // This will show the file information array
     
-    // Ensure file is uploaded successfully
+    // Ensuring file is uploaded successfully
     if ($file_error !== 0) {
         $err_msg = "File upload error! Error code: " . $file_error;
     }
@@ -44,12 +41,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST)) {
         
         if (in_array($file_actual_ext, $allow_type)) {
             if ($file_error === 0) {
-                if ($file_size < $max_file_size) {  // Size check (6MB here)
+                if ($file_size < $max_file_size) {
                     // Check if the folder exists
                     if (!is_dir($upload_folder)) {
                         mkdir($upload_folder, 0777, true);  // Create the directory if it doesn't exist
                     }
-
+                    
                     // Move the uploaded file to the destination folder
                     $file_newname = $file['name'];  // New file name
                     $file_dest = $upload_folder . $file_newname;  // Full path to move the file
@@ -86,10 +83,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST)) {
             $stmt->bindParam(':imgPath', $imgPath);  // Bind imgPath only if it's set
         }
 
-        $stmt->execute();
-
-        if ($stmt->rowCount() > 0) {
+        $success = $stmt->execute();
+        echo "here at stm execute";
+        if ($success) {
             $success_msg = "Product updated successfully!";
+            echo $success_msg;
             header("Location: ../adminpage.php");
             exit();  // Make sure to stop the script after redirecting
         } else {

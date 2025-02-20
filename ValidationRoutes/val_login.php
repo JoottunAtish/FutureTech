@@ -25,6 +25,7 @@
                     if (password_verify($user_pwd, $result['Password'])){
                         $_SESSION["username"] = $result['UserName'];
                         $_SESSION["email"] = $result['Email'];
+                        $_SESSION['uid'] = $result['CustomerID'];
                         header("Location: homepage.php");
                         die();
                     } else{
@@ -56,7 +57,7 @@
 
                 
             } catch (PDOException $e){
-                echo "$e->message()";
+                echo $e->message();
             }
 
         }

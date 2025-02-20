@@ -2,6 +2,18 @@
 include "DB_CONNECTIONS\PDO_CONNECT.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    // if (isset($_SESSION["email"])) {
+    //     $sql = "SELECT CustomerID FROM `customer` where Email = " . $conn->quote($_SESSION["email"]) . ";";
+    //     $query = $conn->prepare($sql);
+    //     $query->execute();
+    //     if ($query->rowCount() > 0) {
+    //         $result = $query->fetch(PDO::FETCH_ASSOC);
+    //         $cid = $result["CustomerID"];
+    //     }
+    // }
+
+
+
     $sql = "SELECT * FROM `products` WHERE ProductID = " . $conn->quote($_GET['pid']) . ";";
 
     $query = $conn->prepare($sql);
@@ -22,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
         <div class="container">
             <div class="row">
-                <img class="col" src="<?php echo $full_path; ?>" alt="keyboard" style="max-width: 600px;">
+                <img class="col" src="<?php echo $full_path; ?>" alt="Product Image" style="max-width: 600px; height:auto;">
 
                 <div class="col">
                     <h3 class="display-6"><?php echo $p_name; ?></h3>
@@ -36,20 +48,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                             <span class="col-2">Quantity left: </span>
                             <p class="col-2"><?php echo $p_qty; ?></p>
                         </div>
-    
-                        <div class="row">
-                            <span class="col-2">Amount: </span>
-                            <p class="col-3">XX Amount</p>
+
+                        <div class="d-flex align-items-center p-3">
+                            <span>Enter Quantity</span>
+                            <input type="number" id="qty" class="m-2 w-25" min="1" max="<?php echo $p_qty; ?>" value="1">
                         </div>
                     </div>
 
-                    <button class="btn btn-primary">Add to Cart</button>
+                    <?php
+                    if (isset($_SESSION["email"]) && isset($_SESSION["username"])) {
+                    ?>
+
+                        <button id="cartBtn" class="btn btn-primary" onclick="addtocart()">Add to Cart</button>
+
+                    <?php
+
+                    } else {
+                    ?>
+                        <a href="futuretech/Login.php">
+                            <button class="btn btn-primary">Log In to purchase item</button>
+                        </a>
+                    <?php
+                    }
+
+                    ?>
                 </div>
 
             </div>
 
         </div>
-        
+
         <div class="container">
             <div class="p-4 form-group">
                 <textarea readonly class="form-control" id="markdown" row="10" style="height:400px; resize: none;"><?php echo htmlentities(stripslashes($p_des), ENT_QUOTES, 'UTF-8') ?></textarea>
@@ -64,3 +92,47 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 
 ?>
+
+<script>
+    function addtocart() {
+        var productid = <?php echo $pid; ?>;
+        var userid = <?php echo $_SESSION['uid']; ?>;
+        var qty = document.getElementById("qty");
+        var price = <?php echo $p_price; ?>;
+
+        var res_send = {
+            "pid": productid,
+            "cid": userid,
+            "qty": qty.value,
+            "price": price
+        };
+
+        var formData = new FormData(); 
+
+        
+        formData.append("pid", productid);
+        formData.append("cid", userid);
+        formData.append("qty", qty.value);
+        formData.append("price", price);
+
+        
+        fetch(`ValidationRoutes/val_addtocart.php`, {
+                method: "POST",
+                body: formData, 
+            })
+            .then(response => response.json()) 
+            .then((data) => { 
+                if (data.status == "success") {
+                    alert("Product added to cart");
+                } else if (data.status == "error") {
+                    alert("Error adding product to cart");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+    };
+
+    
+</script>
