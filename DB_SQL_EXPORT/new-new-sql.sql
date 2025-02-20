@@ -104,6 +104,31 @@ INSERT INTO `categories` (`CategoryName`) VALUES ('Components'), ('Pre-built PCs
 
 
 --- Stored Procedures
+DELIMITER $$
+
+CREATE PROCEDURE `purchase_cart`(
+    IN `in_customer_id` INT
+)
+BEGIN
+    -- Start a transaction
+    START TRANSACTION;
+
+    -- Insert cart items into bought_items table for the given customer
+    INSERT INTO `bought_items` (`CustomerID`, `ProductID`, `Quantity`, `PriceAtCart`, `AddedDate`)
+    SELECT `CustomerID`, `ProductID`, `Quantity`, `PriceAtCart`, `AddedDate`
+    FROM `cart`
+    WHERE `CustomerID` = in_customer_id;
+
+    -- Delete the items from the cart after they have been bought
+    DELETE FROM `cart`
+    WHERE `CustomerID` = in_customer_id;
+
+    -- Commit the transaction
+    COMMIT;
+END $$
+
+DELIMITER ;
+
 
 
 
@@ -136,4 +161,34 @@ JOIN
     `customer` cu ON c.CustomerID = cu.CustomerID
 JOIN 
     `products` p ON c.ProductID = p.ProductID;
+
+
+
+CREATE VIEW `bought_items_details_view` AS
+SELECT 
+    bi.boughtID,
+    bi.CustomerID,
+    cu.UserName AS CustomerName,
+    cu.Email AS CustomerEmail,
+    cu.Country AS CustomerCountry,
+    cu.City AS CustomerCity,
+    cu.PostalCode AS CustomerPostalCode,
+    cu.PhoneNum AS CustomerPhoneNum,
+    bi.ProductID,
+    p.ProductName,
+    p.Discount,
+    p.ProductPrice,
+    p.QtyInStock,
+    p.Description AS ProductDescription,
+    p.imgPath AS ProductImage,
+    p.Category AS ProductCategory,
+    bi.Quantity,
+    bi.PriceAtCart,
+    bi.AddedDate
+FROM 
+    `bought_items` bi
+JOIN 
+    `customer` cu ON bi.CustomerID = cu.CustomerID
+JOIN 
+    `products` p ON bi.ProductID = p.ProductID;
 

@@ -34,7 +34,7 @@
             <div class="form-group row col-12 col-md-6">
                 <label for="pdiscount" class="col-4 col-form-label">Product discount</label>
                 <div class="col input-group">
-                    <input class="form-control" type="text" name="pdiscount" id="pdiscount" placeholder="Enter Product Discount(if any)..." required value="<?php echo $discount; ?>">
+                    <input class="form-control" type="text" name="pdiscount" id="pdiscount" placeholder="Enter Product Discount(if any)..." value="<?php if (isset($discount)){echo $discount;} else {echo 0;} ?>">
                     <div class="input-group-text">%</div>
                 </div>
             </div>

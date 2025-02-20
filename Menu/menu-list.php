@@ -8,17 +8,20 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto col">
+        <ul class="navbar-nav mr-auto col gap-3">
             <li>
-                <a class="nav-link active" href="../../futuretech/Menu/parts.php">PC Parts</a>
+                <a class="nav-link active btn" href="../../futuretech/homepage.php" style="background-color: #95bafa;">Home</a>
+            </li>
+            <li>
+                <a class="nav-link active btn" href="../../futuretech/Menu/parts.php" style="background-color: #95bafa;">PC Parts</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link active" href="../../futuretech/Menu/pre-builts.php">Pre-Built Computers</a>
+                <a class="nav-link active btn" href="../../futuretech/Menu/pre-builts.php" style="background-color: #95bafa;">Pre-Built Computers</a>
             </li>
 
             <li>
-                <a class="nav-link active" href="../../futuretech/Menu/accessories.php">Computer Accessories</a>
+                <a class="nav-link active btn" href="../../futuretech/Menu/accessories.php" style="background-color: #95bafa;">Computer Accessories</a>
             </li>
         </ul>
 
@@ -45,7 +48,7 @@
             <?php
             } else {
             ?>
-                <a class="nav-link" href="../../futuretech/login.php">Sign-up/log-in</a>
+                <a class="nav-link btn p-2" href="../../futuretech/login.php" style="background-color:rgb(149, 164, 250);">Sign-up/log-in</a>
             <?php
             }
             ?>
