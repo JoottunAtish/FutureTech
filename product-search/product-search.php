@@ -29,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $p_img = $result['imgPath'];
         $p_qty = $result['QtyInStock'];
         $full_path = "../../futuretech/" . $p_img;
+        $p_discount = $result["Discount"];
 
 ?>
 
@@ -40,7 +41,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                     <h3 class="display-6"><?php echo $p_name; ?></h3>
                     <div class="row">
                         <span class="col-2">Price: </span>
-                        <p class="col-3">Rs <?php echo $p_price; ?></p>
+                        <div class="col-4 d-flex gap-2">
+                            <?php
+
+                            if ($p_discount > 0) {
+                            ?><strike>
+                                    <p>
+                                        <?php
+                                        echo "Rs. " . number_format($p_price, 2, '.', ',') ?>
+                                </strike>
+                                </p>
+                                <p class="bg-success text-white rounded px-1">
+                                    <?php echo "Rs. " .  number_format($p_price * ((100 - $p_discount) / 100), 2, ".", ",");
+                                    ?>
+                                </p>
+
+                            <?php
+                            } else {
+                                echo "Rs. " . number_format($p_price, 2, '.', ',');
+                            }
+
+                            ?>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -107,21 +129,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             "price": price
         };
 
-        var formData = new FormData(); 
+        var formData = new FormData();
 
-        
+
         formData.append("pid", productid);
         formData.append("cid", userid);
         formData.append("qty", qty.value);
         formData.append("price", price);
 
-        
+
         fetch(`ValidationRoutes/val_addtocart.php`, {
                 method: "POST",
-                body: formData, 
+                body: formData,
             })
-            .then(response => response.json()) 
-            .then((data) => { 
+            .then(response => response.json())
+            .then((data) => {
                 if (data.status == "success") {
                     alert("Product added to cart");
                 } else if (data.status == "error") {
@@ -133,6 +155,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             });
 
     };
-
-    
 </script>

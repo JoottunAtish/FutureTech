@@ -105,3 +105,35 @@ INSERT INTO `categories` (`CategoryName`) VALUES ('Components'), ('Pre-built PCs
 
 --- Stored Procedures
 
+
+
+
+--   Views
+CREATE VIEW `cart_details_view` AS
+SELECT 
+    c.CartID,
+    c.CustomerID,
+    cu.UserName AS CustomerName,
+    cu.Email AS CustomerEmail,
+    cu.Country AS CustomerCountry,
+    cu.City AS CustomerCity,
+    cu.PostalCode AS CustomerPostalCode,
+    cu.PhoneNum AS CustomerPhoneNum,
+    c.ProductID,
+    p.ProductName,
+    p.Discount,
+    p.ProductPrice,
+    p.QtyInStock,
+    p.Description AS ProductDescription,
+    p.imgPath AS ProductImage,
+    p.Category AS ProductCategory,
+    c.Quantity,
+    c.PriceAtCart,
+    c.AddedDate
+FROM 
+    `cart` c
+JOIN 
+    `customer` cu ON c.CustomerID = cu.CustomerID
+JOIN 
+    `products` p ON c.ProductID = p.ProductID;
+
