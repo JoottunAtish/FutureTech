@@ -8,6 +8,10 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav mr-auto col gap-3">
+        </ul>
+
         <div class="navbar">
             <?php
             if (isset($_SESSION["username"]) && !empty($_SESSION["username"])) {
@@ -15,7 +19,7 @@
                 <?php
 
                 ?>
-                <a class="nav-link"  href="../../futuretech/account.php">
+                <a class="nav-link" href="../../futuretech/account.php">
                     <div class="bg-primary p-2 m-1 text-white rounded">
                         <?php echo htmlspecialchars($_SESSION['username']); ?>
                     </div>

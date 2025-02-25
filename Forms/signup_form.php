@@ -10,12 +10,12 @@
 
                 <div class="row-12 p-2">
                     <div class="form-floating col-12">
-                        <input class="form-control" type="email" name="email" id="mail" placeholder="E-mail" value="<?php echo $_SESSION["email"] ?>" required>
+                        <input class="form-control" type="email" name="email" id="mail" placeholder="E-mail"  required>
                         <label for="mail">E-mail</label>
                     </div>
 
                     <div class="form-floating col-12">
-                        <input class="form-control" type="text" name="username" id="user" placeholder="User Name" value="<?php echo $_SESSION["username"] ?>" required>
+                        <input class="form-control" type="text" name="username" id="user" placeholder="User Name"  required>
                         <label for="user">User Name</label>
                     </div>
                 </div>
@@ -41,12 +41,12 @@
 
                 <div class="row-12">
                     <div class="form-floating col-12">
-                        <input class="form-control" type="text" name="phone" id="phone" placeholder="Phone Number" value="<?php echo $_SESSION["phone"] ?>">
+                        <input class="form-control" type="text" name="phone" id="phone" placeholder="Phone Number">
                         <label for="phone">Phone Number</label>
                     </div>
 
                     <div class="form-floating col-12">
-                        <input class="form-control" type="text" name="country" id="country" placeholder="Country" value="<?php echo $_SESSION["country"] ?>">
+                        <input class="form-control" type="text" name="country" id="country" placeholder="Country">
                         <label for="country">Enter Country</label>
                     </div>
                 </div>
@@ -54,16 +54,20 @@
 
                 <div class="row-12 p-2">
                     <div class="col form-floating">
-                        <input class="form-control" type="text" name="city" id="city" placeholder="City" value="<?php echo $_SESSION["city"] ?>">
+                        <input class="form-control" type="text" name="city" id="city" placeholder="City">
                         <label for="city">Enter City</label>
                     </div>
 
                     <div class="col form-floating">
-                        <input class="form-control" type="text" name="postcode" id="postcode" placeholder="Postal code" value="<?php echo $_SESSION["postcode"] ?>">
+                        <input class="form-control" type="text" name="postcode" id="postcode" placeholder="Postal code">
                         <label for="postcode">Enter Postal Code</label>
                     </div>
-                </div>
 
+                </div>
+                
+                <div class="px-3">
+                    <a href="Login.php">Already have an account?</a>
+                </div>
 
                 <p><?php echo $pwd_err ?></p>
 

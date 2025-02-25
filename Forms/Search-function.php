@@ -1,4 +1,4 @@
-<div class="container d-flex justify-content-center align-items-center">
+<div class="container d-flex justify-content-center align-items-center pt-4">
     <div class="text-center">
         <h1 class="display-1">Welcome to FutureTech</h1>
         <p class="display-md">Empowering the Future with Technology</p>

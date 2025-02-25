@@ -34,8 +34,8 @@
         <button class="btn btn-primary mb-3" type="submit" name="login">Login</button>
 
         <div class="d-flex justify-content-between">
-            <a class="" href="">forgot your password?</a>
-            <a class="" href="signup.php">Register an account</a>
+            <a href="#">forgot your password?</a>
+            <a href="signup.php">Register an account</a>
         </div>
         
     </form>

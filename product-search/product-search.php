@@ -1,19 +1,7 @@
 <?php
 include "DB_CONNECTIONS\PDO_CONNECT.php";
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    // if (isset($_SESSION["email"])) {
-    //     $sql = "SELECT CustomerID FROM `customer` where Email = " . $conn->quote($_SESSION["email"]) . ";";
-    //     $query = $conn->prepare($sql);
-    //     $query->execute();
-    //     if ($query->rowCount() > 0) {
-    //         $result = $query->fetch(PDO::FETCH_ASSOC);
-    //         $cid = $result["CustomerID"];
-    //     }
-    // }
-
-
-
+if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pid'])) {
     $sql = "SELECT * FROM `products` WHERE ProductID = " . $conn->quote($_GET['pid']) . ";";
 
     $query = $conn->prepare($sql);
@@ -87,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
                     } else {
                     ?>
-                        <a href="futuretech/Login.php">
+                        <a href="Login.php">
                             <button class="btn btn-primary">Log In to purchase item</button>
                         </a>
                     <?php
@@ -102,19 +90,57 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
         <div class="container">
             <div class="p-4 form-group">
-                <textarea readonly class="form-control" id="markdown" row="10" style="height:400px; resize: none;"><?php echo htmlentities(stripslashes($p_des), ENT_QUOTES, 'UTF-8') ?></textarea>
+                <textarea readonly class="form-control" id="markdown" row="10" style="height:fit-content; resize: none;"><?php echo htmlentities(stripslashes($p_des), ENT_QUOTES, 'UTF-8') ?></textarea>
+            </div>
+
+            <h3 class="display-6">Product Reviews</h3>
+            <div class="m-3 p-2 d-flex flex-column gap-3 border rounded">
+                <?php
+
+                $sql = "SELECT * FROM reviews_with_customer_name WHERE ProductID = :pid";
+
+                $statement = $conn->prepare($sql);
+                $statement->bindParam(':pid', $_GET['pid']);
+                $statement->execute();
+
+                if ($statement->rowCount() > 0) {
+                    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($result as $res) {
+                ?>
+                        <div class="border rounded p-2 gap-3">
+                            <div class="d-flex justify-content-between px-4 rounded bg-light align-items-center">
+                                <div class="d-flex flex-column justify-content-start">
+                                    <p class="h3"><?php echo $res['CustomerName']; ?></p>
+                                    <p class="text-muted"><?php echo date('m/d/Y', strtotime($res['ReviewDate'])); ?></p>
+                                </div>
+                                <div>
+                                    <p class="h2"><?php echo "Rating: " . $res["Rating"] . "/5" ?></p>
+                                </div>
+                            </div>
+
+                            <div class="px-4">
+                                <p class="h4 p-3"><?php echo $res["ReviewText"]; ?></p>
+                            </div>
+                        </div>
+                <?php
+
+                    }
+                }
+
+
+
+
+                ?>
+
             </div>
         </div>
-
 <?php
     }
 } else {
-    header("Location: homepage.php");
+    echo "<script>alert('Page could not be loaded');window.location='homepage.php';</script>";
     die();
 }
-
 ?>
-
 <script>
     function addtocart() {
         var productid = <?php echo $pid; ?>;

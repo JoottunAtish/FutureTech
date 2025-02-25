@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg p-3 bg-light sticky-top">
     <a href="../../futuretech/homepage.php" class="navbar-brand">
-        <img src="../../futuretech/images/Logo/Logo.png" alt="Futuretech Logo" width="50" style="vertical-align:bottom">
+        <img src="../../futuretech/images/Logo/Logo.png" alt="Futuretech Logo" width="50" style="vertical-align:bottom" class="rounded">
     </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,18 +10,18 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto col gap-3">
             <li>
-                <a class="nav-link active btn" href="../../futuretech/homepage.php" style="background-color: #95bafa;">Home</a>
+                <a class="nav-link active btn" href="../../futuretech/homepage.php" style="background-color:rgb(221, 221, 221);">Home</a>
             </li>
             <li>
-                <a class="nav-link active btn" href="../../futuretech/Menu/parts.php" style="background-color: #95bafa;">PC Parts</a>
+                <a class="nav-link active btn" href="../../futuretech/Menu/parts.php" style="background-color: rgb(221, 221, 221);">PC Parts</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link active btn" href="../../futuretech/Menu/pre-builts.php" style="background-color: #95bafa;">Pre-Built Computers</a>
+                <a class="nav-link active btn" href="../../futuretech/Menu/pre-builts.php" style="background-color: rgb(221, 221, 221);">Pre-Built Computers</a>
             </li>
 
             <li>
-                <a class="nav-link active btn" href="../../futuretech/Menu/accessories.php" style="background-color: #95bafa;">Computer Accessories</a>
+                <a class="nav-link active btn" href="../../futuretech/Menu/accessories.php" style="background-color: rgb(221, 221, 221);">Computer Accessories</a>
             </li>
         </ul>
 

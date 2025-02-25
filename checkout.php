@@ -25,6 +25,8 @@
 
         if ($query->rowCount() > 0){
             echo "<script>alert('Purchase successful');window.location='account.php';</script>";
+        } else {
+            echo "<script>alert('No Item in cart');window.location='cartpage.php';</script>";
         }
     ?>
 

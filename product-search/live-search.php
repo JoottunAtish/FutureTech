@@ -54,7 +54,7 @@ if (isset($_POST['input'])) {
 <?php
         }
     } else {
-        echo "Nothing to display!";
+        echo "No search results found!";
     }
 }
 ?>

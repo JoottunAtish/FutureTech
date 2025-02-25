@@ -184,11 +184,23 @@ SELECT
     p.Category AS ProductCategory,
     bi.Quantity,
     bi.PriceAtCart,
-    bi.AddedDate
+    bi.AddedDate,
+    bi.Status
 FROM 
     `bought_items` bi
 JOIN 
     `customer` cu ON bi.CustomerID = cu.CustomerID
 JOIN 
     `products` p ON bi.ProductID = p.ProductID;
+
+
+
+CREATE VIEW `reviews_with_customer_name` AS 
+SELECT
+    cu.UserName AS CustomerName,
+    r.*
+FROM 
+    `reviews` r
+JOIN
+    `customer` cu ON r.CustomerID = cu.CustomerID;
 
