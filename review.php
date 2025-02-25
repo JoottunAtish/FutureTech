@@ -68,8 +68,8 @@
         }
     ?>
 
-    <div class="d-flex gap-3 p-3">
-        <img src="<?php echo $pimg; ?>" alt="Product Item" style="" width="20%" height="auto">
+    <div class="d-flex gap-3 p-3 align-items-center">
+        <img src="<?php echo $pimg; ?>" alt="Product Item" style="height: fit-content;" width="40%">
         <div class="d-flex gap-5 flex-column py-3">
             <h2><?php echo $pname; ?></h2>
             <form method="post" action="<?php echo $_SERVER["PHP_SELF"];  ?>" class="d-flex flex-column gap-3">

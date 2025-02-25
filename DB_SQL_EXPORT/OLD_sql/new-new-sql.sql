@@ -119,6 +119,12 @@ BEGIN
     FROM `cart`
     WHERE `CustomerID` = in_customer_id;
 
+    -- Update product stock quantities
+    UPDATE `products` p
+    JOIN `cart` c ON p.ProductID = c.ProductID
+    SET p.QtyInStock = p.QtyInStock - c.Quantity
+    WHERE c.CustomerID = in_customer_id;
+
     -- Delete the items from the cart after they have been bought
     DELETE FROM `cart`
     WHERE `CustomerID` = in_customer_id;
@@ -130,11 +136,8 @@ END $$
 DELIMITER ;
 
 
-
-
-
 --   Views
-CREATE VIEW `cart_details_view` AS
+ALTER VIEW `cart_details_view` AS
 SELECT 
     c.CartID,
     c.CustomerID,

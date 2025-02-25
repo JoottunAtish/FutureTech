@@ -123,15 +123,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pid'])) {
                             </div>
                         </div>
                 <?php
-
                     }
                 }
-
-
-
-
                 ?>
-
             </div>
         </div>
 <?php

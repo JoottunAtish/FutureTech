@@ -195,3 +195,38 @@ BEGIN
     WHERE `AdminID` = p_AdminID;
 END //
 DELIMITER ;
+
+
+DELIMITER $$
+
+CREATE PROCEDURE `insert_or_update_cart`(
+    IN `in_customer_id` INT,
+    IN `in_product_id` INT,
+    IN `in_quantity` INT,
+    IN `in_price` DECIMAL(10, 2)
+)
+BEGIN
+    DECLARE `cart_item_count` INT;
+
+    -- Check if the product already exists in the cart for the given customer
+    SELECT COUNT(*) INTO `cart_item_count`
+    FROM `cart`
+    WHERE `CustomerID` = in_customer_id AND `ProductID` = in_product_id;
+
+    IF `cart_item_count` > 0 THEN
+        -- If the item exists, update the quantity and price
+        UPDATE `cart`
+        SET 
+            `Quantity` = `Quantity` + in_quantity,
+            `PriceAtCart` = in_price
+        WHERE 
+            `CustomerID` = in_customer_id AND `ProductID` = in_product_id;
+    ELSE
+        -- If the item does not exist, insert a new record
+        INSERT INTO `cart` (`CustomerID`, `ProductID`, `Quantity`, `PriceAtCart`, `AddedDate`)
+        VALUES (in_customer_id, in_product_id, in_quantity, in_price, current_timestamp());
+    END IF;
+
+END $$
+
+DELIMITER ;
