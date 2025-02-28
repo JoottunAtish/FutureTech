@@ -1,7 +1,3 @@
-<?php
-    include "ValidationRoutes/val_add.php";
-?>
-
 <form class="p-3 m-4 col-10" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" enctype="multipart/form-data">
 
     <h3 class="display-4 m-4">Enter Product</h3>
@@ -15,7 +11,7 @@
     <!-- Product Description -->
     <div class="form-group m-4">
         <label for="pname">Product Description</label>
-        <textarea class="form-control" name="pdesc" id="pdesc" placeholder="Enter product Description..." rows="4" style="height: 200px;" required><?php echo $desc;?></textarea>
+        <textarea class="form-control" name="pdesc" id="pdesc" placeholder="Enter product Description..." rows="4" style="height: 200px;" required><?php echo $desc; ?></textarea>
     </div>
 
 
@@ -34,7 +30,11 @@
             <div class="form-group row col-12 col-md-6">
                 <label for="pdiscount" class="col-4 col-form-label">Product discount</label>
                 <div class="col input-group">
-                    <input class="form-control" type="text" name="pdiscount" id="pdiscount" placeholder="Enter Product Discount(if any)..." value="<?php if (isset($discount)){echo $discount;} else {echo 0;} ?>">
+                    <input class="form-control" type="text" name="pdiscount" id="pdiscount" placeholder="Enter Product Discount(if any)..." value="<?php if (isset($discount)) {
+                                                                                                                                                        echo $discount;
+                                                                                                                                                    } else {
+                                                                                                                                                        echo 0;
+                                                                                                                                                    } ?>">
                     <div class="input-group-text">%</div>
                 </div>
             </div>
@@ -82,8 +82,12 @@
         <div id="fileHelpId" class="form-text">Upload type: jpg, jpeg, png</div>
     </div>
 
-    <p class="text-danger"> <?php echo $err_msg ?> </p>
-    <p class="text-success"> <?php echo $success_msg ?> </p>
+    <p class="text-danger"> <?php if (isset($err_msg)) {
+                                echo $err_msg;
+                            } ?> </p>
+    <p class="text-success"> <?php if (isset($success_msg)) {
+                                    echo $success_msg;
+                                } ?> </p>
 
     <button type="submit" class="btn btn-primary m-4">Submit</button>
 

@@ -1,8 +1,8 @@
-<?php include "ValidationRoutes/val_addAdmin.php" ?>
+
 
 <script src="JS/Passwd_toggle.js"></script>
 
-<div class="container">
+<div class="container d-flex justify-content-center">
     <div class="mb-3 col-md-3">
         <form class="row g-3" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
 
@@ -49,7 +49,6 @@
                     <select name="role" id="role" class="form-control" required>
                         <option value="1">Clerk</option>
                         <option value="2">Manager</option>
-                        <option value="3">Owner</option>
                     </select>
                 </div>
             </div>

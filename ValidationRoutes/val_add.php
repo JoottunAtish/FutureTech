@@ -1,5 +1,4 @@
 <?php
-include "DB_CONNECTIONS\PDO_ADMIN_CONNECT.php";
 
 $upload_err = "";
 

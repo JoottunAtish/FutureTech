@@ -1,5 +1,4 @@
 <?php
-require_once "DB_CONNECTIONS\PDO_ADMIN_CONNECT.php";
 
 $sql = "SELECT * FROM `admin` WHERE AdminName = :name_admin AND Email = :mail";
 
@@ -118,7 +117,7 @@ if ($stm->rowCount() == 0) {
                     <label for="date"><strong>Product Name:</strong> <span id="modalAddedDate"></span></label>
 
                     <label for="status"><strong>Status:</strong></label>
-                    <select name="status" id="status">
+                    <select name="status" class="form-select" id="status">
                         <option value="Pending">Pending</option>
                         <option value="Processing">Processing</option>
                         <option value="Closed">Closed</option>

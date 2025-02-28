@@ -43,7 +43,14 @@
                         if (password_verify($user_pwd, $result['Password'])){
                             $_SESSION["username"] = $result['AdminName'];
                             $_SESSION["email"] = $result['Email'];
-                            header("Location: adminpage.php");
+                            if ($result['AdminRole'] == 1){
+                                header("Location: clerk/page.php");
+                            }
+                            if ($result['AdminRole'] == 2){
+                                header("Location: manager/page.php");
+                            }
+
+                            // header("Location: adminpage.php");
                             die();
                         }else{
                             $usr_err = "Error in email and password";

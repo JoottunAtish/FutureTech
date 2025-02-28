@@ -23,7 +23,6 @@
     // include "Defaultcard\default_homecard.php";
     ?>
     <!-- Display Default cards -->
-
     <div class="card-container m-4 live-search-default">
     </div>
 

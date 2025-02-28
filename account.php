@@ -38,7 +38,7 @@
         <!-- Items bought -->
         <div>
             <div>
-                <h3 class="display-6 mt-5">Items Bought</h3>
+                <h3 class="display-3 mt-5 fw-thin">Items Bought</h3>
                 <div class="d-flex flex-column gap-2">
                     <?php
                     if (isset($_SESSION['uid'])) {
@@ -73,10 +73,13 @@
                                     $reviewExist = false;
                                 }
                     ?>
-                                <div class="d-flex gap-2 border rounded p-3">
-                                    <img src="<?php echo $pimg ?>" alt="Product Item" style="width: 200px; height: fit-content;">
-                                    <div class="px-3">
-                                        <h4 class="display-6 d-flex align-items-center gap-4" style="width: fit-content;"><?php echo $pname ?><span class="btn btn-secondary"><?php echo $status; ?></span></h4>
+                                <div class="d-flex gap-2 border rounded p-3 flex-wrap">
+                                    <img src="<?php echo $pimg ?>" alt="Product Item" style="width: 100%; max-width: 450px; height: fit-content;">
+                                    <div class="px-3 w-full" style="width: auto;">
+                                        <div class="d-flex flex-wrap gap-2 justify-content-between ">
+                                            <h4 class="display-6 d-flex align-items-center gap-4"><?php echo $pname ?></h4>
+                                            <span class=" bg-secondary text-white rounded p-3"><?php echo $status; ?></span>
+                                        </div>
                                         <div>
                                             <p><?php echo  "Price: Rs. " . number_format($price, 2) ?></p>
                                             <p><?php echo "Quantity: " . $qty ?></p>

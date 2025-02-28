@@ -26,7 +26,21 @@
         <h2 class="display-4"><?php if (isset($_SESSION["username"]) && !empty($_SESSION["username"])) {
                                     echo $_SESSION["username"];
                                 } ?>'s Cart</h2>
-        <div class="d-flex gap-4 p-3">
+        <div class="d-flex flex-column gap-4 p-3">
+
+            <div class="d-flex flex-column p-2 border rounded">
+                <p class="display-6">Check-Out</p>
+                <div class="px-4">
+                    <p>Total Price: <span>Rs. <?php echo number_Format($totalprice, 2); ?></span></p>
+                    <p>Tax: 15%</p>
+                </div>
+                <div class="px-4 d-flex justify-content-between gap-4">
+                    <p class="bg-primary rounded text-white p-2 text-center">Final Price: Rs. <span><?php echo number_Format($totalprice * 1.15, 2); ?></span></p>
+                    <a href="checkout.php">
+                        <p href="" class="btn btn-success rounded text-white p-2 text-center">Check-Out</p>
+                    </a>
+                </div>
+            </div>
 
             <div>
                 <?php
@@ -48,7 +62,7 @@
                         $totalprice  +=  $qty * $price;
 
                 ?>
-                        <div style="max-width: 100%;" class="d-flex mb-3 p-2 border rounded">
+                        <div class="d-flex flex-wrap mb-3 p-2 border rounded">
                             <img src="<?php echo $pimg; ?>" class="p-3" style="max-width: 250px; height: fit-content;" alt="Product item">
                             <div>
                                 <h4 class="display-6"><?php echo $pname; ?></h4>
@@ -58,7 +72,7 @@
                                     <p style="width: fit-content;" class="bg-secondary p-1 px-2 rounded text-white">Price: <span><?php echo number_format($price * $qty, 2, ".", ","); ?></span></p>
                                 </div>
                                 <div class="pb-2">
-                                    <a href="ValidationRoutes/val_cart_remove.php?pid=<?php echo $pid;?>">
+                                    <a href="ValidationRoutes/val_cart_remove.php?pid=<?php echo $pid; ?>">
                                         <button class="btn btn-danger">Delete Item</button>
                                     </a>
                                 </div>
@@ -70,19 +84,7 @@
 
                 ?>
             </div>
-            <div style="width: 60%;  height: fit-content;" class="d-flex flex-column p-2 border rounded">
-                <p class="display-6">Check-Out</p>
-                <div class="px-4">
-                    <p>Total Price: <span>Rs. <?php echo number_Format($totalprice, 2); ?></span></p>
-                    <p>Tax: 15%</p>
-                </div>
-                <div class="px-5 d-flex justify-content-between gap-4">
-                    <p class="bg-primary rounded text-white p-2 text-center">Final Price: Rs. <span><?php echo number_Format($totalprice* 1.15, 2); ?></span></p>
-                    <a href="checkout.php">
-                        <p href="" class="btn btn-success rounded text-white p-2 text-center">Check-Out</p>
-                    </a>
-                </div>
-            </div>
+
 
         </div>
     </div>

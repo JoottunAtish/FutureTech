@@ -8,7 +8,7 @@ $g_query->execute();
 
 if ($g_query->rowCount() > 0) {
     $results = $g_query->fetchAll(PDO::FETCH_ASSOC);
-    
+
     foreach ($results as $res) {
 
         $pid = $res['ProductID'];
@@ -17,22 +17,34 @@ if ($g_query->rowCount() > 0) {
         $p_price = $res['ProductPrice'];
         $p_img = $res['imgPath'];
         $p_discount = $res['Discount'];
+        $p_qty = $res['QtyInStock'];
 
 ?>
         <div class="card text-center mb-3 col-12 col-sm-6 col-md-4 mb-4" style="max-width: 300px;">
-            <img src="<?php echo "../../futuretech/" . $p_img; ?>" alt="<?php echo $p_name; ?>" class="card-img img-responsive" style="max-width: 300px; max-height: 300px; overflow:hidden">
+            <div>
+                <img src="<?php echo "../../futuretech/" . $p_img; ?>" alt="<?php echo $p_name; ?>" class="card-img img-responsive" style="max-width: 300px; max-height: 300px; overflow:hidden">
+                <?php
+                if ($p_qty == 0) {
+                ?>
+                    <span class="fw-bold text-danger">Out of stock</span>
+                <?php
+                }
+                ?>
+            </div>
             <div class="card-body">
                 <h4 class="card-title text-truncate"><?php echo $p_name; ?></h4>
                 <p class="card-text text-truncate"><?php echo $p_des; ?></p>
                 <p><?php include "price_display.php" ?></p>
+            </div>
+            <div class="card-footer">
                 <form action="../../FutureTech/productpage.php" method="GET">
-                    <button name="pid" value="<?php echo $pid ?>" class="btn btn-primary">Go to page</button>
+                    <button name="pid" value="<?php echo $pid ?>" class="btn btn-primary card-link">Go to page</button>
                 </form>
             </div>
         </div>
 
 <?php
-        
+
 
     }
 } else {

@@ -1,5 +1,5 @@
 <?php
-include "DB_CONNECTIONS\PDO_ADMIN_CONNECT.php";
+
 $sql = "SELECT * FROM products";
 
 $stmt = $conn->prepare($sql);
@@ -24,7 +24,7 @@ while ($row = $stmt->fetch()) {
 ?>
     <div class="d-flex gap-4 p-3 m-2 border border-2 rounded">
         <div class="img-container">
-            <img class="border border-1 rounded" style="max-width: 300px; max-height: 300px; overflow:hidden" src="<?php echo $imgPath; ?>">
+            <img class="border border-1 rounded" style="max-width: 300px; max-height: 300px; overflow:hidden" src="../../futuretech/<?php echo $imgPath; ?>">
         </div>
         <div class="d-flex flex-column justify-content-between">
             <div>
@@ -35,11 +35,11 @@ while ($row = $stmt->fetch()) {
                 <p><strong>Quantity:</strong> <?php echo $qty; ?></p>
             </div>
             <div>
-                <a href="clerk/modifyProduct.php?id=<?php echo $id; ?>">
+                <a href="modifyProduct.php?id=<?php echo $id; ?>">
                     <button class="btn btn-primary">Modify</button>
                 </a>
 
-                <a href="clerk/deleteProduct.php?id=<?php echo $id; ?>">
+                <a href="deleteProduct.php?id=<?php echo $id; ?>">
                     <button class="btn btn-primary">Delete</button>
                 </a>
             </div>

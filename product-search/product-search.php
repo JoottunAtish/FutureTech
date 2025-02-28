@@ -22,24 +22,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pid'])) {
 ?>
 
         <div class="container">
-            <div class="row">
-                <img class="col" src="<?php echo $full_path; ?>" alt="Product Image" style="max-width: 600px; height:auto;">
+            <div class="d-flex flex-wrap justify-content-center">
+                <img class="col p-3" src="<?php echo $full_path; ?>" alt="Product Image" style="max-width: 90vw; height:min-content;">
 
-                <div class="col">
+                <div class="col p-3">
                     <h3 class="display-6"><?php echo $p_name; ?></h3>
                     <div class="row">
-                        <span class="col-2">Price: </span>
-                        <div class="col-4 d-flex gap-2">
+                        <span class="col-2 p-1 px-3">Price: </span>
+                        <div class="col-4 d-flex gap-2" style="width: fit-content;">
                             <?php
-
                             if ($p_discount > 0) {
                             ?><strike>
-                                    <p>
-                                        <?php
-                                        echo "Rs. " . number_format($p_price, 2, '.', ',') ?>
+                                    <p class="p-1">
+                                        <?php echo "Rs. " . number_format($p_price, 2, '.', ',') ?>
                                 </strike>
                                 </p>
-                                <p class="bg-success text-white rounded px-1">
+                                <p class="bg-success text-white rounded p-1">
                                     <?php echo "Rs. " .  number_format($p_price * ((100 - $p_discount) / 100), 2, ".", ",");
                                     ?>
                                 </p>
@@ -54,14 +52,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pid'])) {
                     </div>
 
                     <div class="row">
-                        <div class="row">
-                            <span class="col-2">Quantity left: </span>
-                            <p class="col-2"><?php echo $p_qty; ?></p>
+                        <div class="d-flex gap-3" style="width: max-content;">
+                            <span class="col-2" style="width: fit-content;">Quantity left: </span>
+                            <?php
+                            if ($p_qty == 0) {
+                            ?>
+                                <p class="col-2 text-danger" style="width: fit-content;">Out of Stock</p>
+                            <?php
+                            } else {
+                            ?>
+                                <p class="col-2" style="width: fit-content;"><?php echo $p_qty; ?></p>
+                            <?php
+                            }
+                            ?>
                         </div>
 
                         <div class="d-flex align-items-center p-3">
                             <span>Enter Quantity</span>
-                            <input type="number" id="qty" class="m-2 w-25" min="1" max="<?php echo $p_qty; ?>" value="1">
+                            <?php
+                            if ($p_qty == 0) {
+                            ?>
+                                <input type="number" disabled id="qty" class="m-2 w-25 form-control" min="1" max="<?php echo $p_qty; ?>" value="1">
+                            <?php
+                            } else {
+                            ?>
+                                <input type="number" id="qty" class="m-2 w-25 form-control" min="1" max="<?php echo $p_qty; ?>" value="1">
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
 
@@ -122,8 +140,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pid'])) {
                                 <p class="h4 p-3"><?php echo $res["ReviewText"]; ?></p>
                             </div>
                         </div>
-                <?php
+                    <?php
                     }
+                } else {
+                    ?>
+                    <p>No Review Available</p>
+                <?php
                 }
                 ?>
             </div>
@@ -141,13 +163,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pid'])) {
         var userid = <?php echo $_SESSION['uid']; ?>;
         var qty = document.getElementById("qty");
         var price = <?php echo $p_price; ?>;
-
-        var res_send = {
-            "pid": productid,
-            "cid": userid,
-            "qty": qty.value,
-            "price": price
-        };
+        var discount = <?php echo $p_discount; ?>;
+        var final = price * ((100 - discount) / 100);
 
         var formData = new FormData();
 
@@ -155,7 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pid'])) {
         formData.append("pid", productid);
         formData.append("cid", userid);
         formData.append("qty", qty.value);
-        formData.append("price", price);
+        formData.append("price", final);
 
 
         fetch(`ValidationRoutes/val_addtocart.php`, {

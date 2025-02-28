@@ -1,5 +1,4 @@
 <?php
-    include "DB_CONNECTIONS\PDO_CONNECT.php";
 
     $pwd_err = "";
     if (!(isset($_SESSION["username"]) || isset($_SESSION["email"]))){
