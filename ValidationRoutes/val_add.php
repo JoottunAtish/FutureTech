@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' & isset($_POST['pname'])) {
                 if ($file_size < 1000000) {
 
                     if (!file_exists($file_dest)) {
-                        move_uploaded_file($file_tmpname, $file_dest);
+                        move_uploaded_file($file_tmpname, "../" . $file_dest);
 
                         $insert_sql = "INSERT INTO `products`(`ProductName`, `Discount`, `ProductPrice`, `QtyInStock`, `Description`, `imgPath`, `Category`) VALUES
                             (" . $conn->quote($name) . "," . $conn->quote($discount) . "," . $conn->quote($price) . "," . $conn->quote($qty) . "," . $conn->quote($desc) . "," . $conn->quote($file_dest) . "," . $conn->quote($cat) . ");";
@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' & isset($_POST['pname'])) {
 
                         if ($insert_query->rowCount() > 0) {
                             $success_msg = "File Uploaded!!";
-                            header("Location: adminpage.php");
+                            // header("Location: adminpage.php");
                         } else {
                             unlink($file_dest);
                             $upload_err = "Error Could Not update database!!";

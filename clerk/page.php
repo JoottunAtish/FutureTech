@@ -30,6 +30,8 @@
 <body>
 
     <?php
+    $account_link = "account.php";
+    $homepage = "page.php";
     include "../Menu/admin-nav.php";
     ?>
 

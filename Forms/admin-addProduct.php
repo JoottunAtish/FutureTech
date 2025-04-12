@@ -5,13 +5,13 @@
     <!-- Product Name -->
     <div class="form-group m-4">
         <label for="pname">Product Name</label>
-        <textarea class="form-control" name="pname" id="pname" placeholder="Enter product Name..." rows="2" required><?php echo $name; ?></textarea>
+        <textarea class="form-control" name="pname" id="pname" placeholder="Enter product Name..." rows="2" required></textarea>
     </div>
 
     <!-- Product Description -->
     <div class="form-group m-4">
         <label for="pname">Product Description</label>
-        <textarea class="form-control" name="pdesc" id="pdesc" placeholder="Enter product Description..." rows="4" style="height: 200px;" required><?php echo $desc; ?></textarea>
+        <textarea class="form-control" name="pdesc" id="pdesc" placeholder="Enter product Description..." rows="4" style="height: 200px;" required></textarea>
     </div>
 
 
@@ -30,11 +30,7 @@
             <div class="form-group row col-12 col-md-6">
                 <label for="pdiscount" class="col-4 col-form-label">Product discount</label>
                 <div class="col input-group">
-                    <input class="form-control" type="text" name="pdiscount" id="pdiscount" placeholder="Enter Product Discount(if any)..." value="<?php if (isset($discount)) {
-                                                                                                                                                        echo $discount;
-                                                                                                                                                    } else {
-                                                                                                                                                        echo 0;
-                                                                                                                                                    } ?>">
+                    <input class="form-control" type="text" name="pdiscount" id="pdiscount" placeholder="Enter Product Discount(if any)..." value="0">
                     <div class="input-group-text">%</div>
                 </div>
             </div>
@@ -50,7 +46,7 @@
             <div class="form-group row col-12 col-md-6">
                 <label for="pqty" class="col-4 col-form-label">Product Quantity</label>
                 <div class="col">
-                    <input class="form-control" type="text" name="pqty" id="pqty" placeholder="Enter Product Quantity..." required value="<?php echo $qty; ?>">
+                    <input class="form-control" type="text" name="pqty" id="pqty" placeholder="Enter Product Quantity..." required>
                 </div>
             </div>
 

@@ -29,9 +29,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" & !empty($_GET)) {
     $sql = "DELETE FROM products WHERE ProductID = " . $conn->quote($_GET['id']) . ";";
     $query = $conn->prepare($sql);
     $query->execute();
-    header("Location: ../adminpage.php");
+    header("Location: page.php");
     exit();
 } else {
-    header("Location: ../adminpage.php");
+    header("Location: page.php");
     exit();
 }

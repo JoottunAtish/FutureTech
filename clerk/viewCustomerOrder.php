@@ -24,7 +24,7 @@ if ($stm->rowCount() == 0) {
     //     $query->bindParam(":pid", $pid);
 
     //     $query->execute();
-        
+
     // }
 
 
@@ -114,7 +114,7 @@ if ($stm->rowCount() == 0) {
                     <input type="hidden" id="productid" name="pid">
 
                     <label for="productname"><strong>Product Name:</strong> <span id="modalProductName"></span></label>
-                    <label for="date"><strong>Product Name:</strong> <span id="modalAddedDate"></span></label>
+                    <label for="date"><strong>Date Added:</strong> <span id="modalAddedDate"></span></label>
 
                     <label for="status"><strong>Status:</strong></label>
                     <select name="status" class="form-select" id="status">
@@ -153,5 +153,8 @@ if ($stm->rowCount() == 0) {
 
         // Set the status dropdown value
         document.getElementById('status').value = status;
+
+        // let modal = new bootstrap.Modal(document.getElementById('modifyModal'));
+        // modal.show();
     }
 </script>

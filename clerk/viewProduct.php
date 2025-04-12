@@ -51,12 +51,4 @@ while ($row = $stmt->fetch()) {
 <?php
 }
 
-
-
-
-
-
-
-
-
 ?>

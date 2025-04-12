@@ -1,3 +1,4 @@
+<!-- Deprecated File -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,9 +10,9 @@
     include "DB_CONNECTIONS/PDO_ADMIN_CONNECT.php";
 
     include "Essential_tags/AJAX_TAG.php";
-    
 
-    include "ValidationRoutes/val_admin.php";
+
+    // include "ValidationRoutes/val_admin.php";
 
     $err_msg = "";
     $success_msg = "";
@@ -42,7 +43,10 @@
         </div>
 
         <div class="tab-pane fade" id="nav-admin" role="tabpanel" aria-labelledby="nav-admin-tab">
-            <?php include "Forms/admin-addAdmin.php"; ?>
+            <?php
+                $pwd_toggle = "../JS/Passwd_toggle.js";
+                include "Forms/admin-addAdmin.php";
+            ?>
         </div>
 
         <div class="tab-pane fade" id="nav-viewCustomerOrder" role="tabpanel" aria-labelledby="nav-viewCustomerOrders-tab">

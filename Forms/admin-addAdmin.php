@@ -1,25 +1,25 @@
 
 
-<script src="JS/Passwd_toggle.js"></script>
+<script src=<?php echo $pwd_toggle; ?>></script>
 
 <div class="container d-flex justify-content-center">
     <div class="mb-3 col-md-3">
         <form class="row g-3" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
 
             <div class="col-12 d-flex justify-content-center">
-                <a href="homepage.php" class="display-2">FutureTech</a>
+                <a href="../homepage.php" class="display-2">FutureTech</a>
             </div>
             <p> <?php echo $pdo_msg ?></p>
 
 
             <div class="row-12 p-2">
                 <div class="form-floating col-12">
-                    <input class="form-control" type="email" name="email" id="mail" placeholder="E-mail" value="<?php echo $_SESSION["email"] ?>" required>
+                    <input class="form-control" type="email" name="email" id="mail" placeholder="E-mail" required>
                     <label for="mail">E-mail</label>
                 </div>
 
                 <div class="form-floating col-12">
-                    <input class="form-control" type="text" name="adminname" id="adminname" placeholder="Admin Name" value="<?php echo $_SESSION["username"] ?>" required>
+                    <input class="form-control" type="text" name="adminname" id="adminname" placeholder="Admin Name" required>
                     <label for="user">Admin Name</label>
                 </div>
             </div>

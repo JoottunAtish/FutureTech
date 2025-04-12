@@ -12,7 +12,7 @@ $(document).ready(function () {
             $(".live-search-default").html(data);
         }
     });
-
+    
     $("#live-search").keyup(function () {
 
         var input = $(this).val();
@@ -35,7 +35,6 @@ $(document).ready(function () {
                 url: "../../futuretech/Defaultcard/default_homecard.php",
                 method: "POST",
                 data: {},
-
                 success: function (data) {
                     $(".live-search-default").html(data);
                     document.getElementById('search-display-header').style.visibility = 'hidden';

@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pid'])) {
 
         <div class="container">
             <div class="d-flex flex-wrap justify-content-center">
-                <img class="col p-3" src="<?php echo $full_path; ?>" alt="Product Image" style="max-width: 90vw; height:min-content;">
+                <img class="col p-3 border" src="<?php echo $full_path; ?>" alt="Product Image" style="max-width: 40vw; height:min-content;">
 
                 <div class="col p-3">
                     <h3 class="display-6"><?php echo $p_name; ?></h3>

@@ -1,14 +1,10 @@
 <?php
 include "../DB_CONNECTIONS/PDO_ADMIN_CONNECT.php";
 
-$imgPath = "";
 $max_file_size = 6 * 1024 * 1024;  // 6MB
-
-// Set the file path upload folder
 $upload_folder = "Uploads/IMG/";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST)) {
-    
     $id = $_POST['pid'];
     $name = $_POST['pname'];
     $price = $_POST['pprice'];
@@ -17,84 +13,70 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST)) {
     $cat = $_POST['pcat'];
     $desc = $_POST['pdesc'];
 
-    // Check if a file is uploaded
-    $file = $_FILES['file-select'];
-    $file_tmpname = $file['tmp_name'];
-    $file_size = $file['size'];
-    $file_error = $file['error'];
-    $file_type = $file['type'];
-    
-    // Ensuring file is uploaded successfully
-    if ($file_error !== 0) {
-        $err_msg = "File upload error! Error code: " . $file_error;
-    }
+    print_r($_FILES);
 
-    // If no file uploaded, handle it without updating imgPath
-    if (empty($file_tmpname) || !isset($file) || $file_error === 4) {
-        // No file uploaded, retain current imgPath (no update for image)
-        $sql = "UPDATE products SET ProductName = :name, ProductPrice = :price, Description = :desp, Category = :cat WHERE ProductID = :id";
-    } else {
-        // Check if the file extension is allowed
-        $file_ext = explode('.', $file['name']);
-        $file_actual_ext = strtolower(end($file_ext));
-        $allow_type = ["png", 'jpg', 'jpeg'];
-        
-        if (in_array($file_actual_ext, $allow_type)) {
-            if ($file_error === 0) {
-                if ($file_size < $max_file_size) {
-                    // Check if the folder exists
-                    if (!is_dir($upload_folder)) {
-                        mkdir($upload_folder, 0777, true);  // Create the directory if it doesn't exist
-                    }
-                    
-                    // Move the uploaded file to the destination folder
-                    $file_newname = $file['name'];  // New file name
-                    $file_dest = $upload_folder . $file_newname;  // Full path to move the file
+    $imgPath = "";
 
-                    if (move_uploaded_file($file_tmpname, $file_dest)) {
-                        // Proceed with updating the database with the new image path
-                        $imgPath = $file_dest;  // Set the imgPath to the uploaded file path
-                        $sql = "UPDATE products SET ProductName = :name, ProductPrice = :price, Description = :desp, imgPath = :imgPath, Category = :cat WHERE ProductID = :id";
-                    } else {
-                        $err_msg = "Error: Could not upload file!";
-                    }
-                } else {
-                    $err_msg = "Error: File size too large. (Must be less than 6MB)";
-                }
+    // Check if a file is uploaded.
+    if (isset($_FILES['file-select']) && $_FILES['file-select']['error'] !== 4) {
+        $file = $_FILES['file-select'];
+        $file_tmpname = $file['tmp_name'];
+        $file_size = $file['size'];
+        $file_error = $file['error'];
+        $file_ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+        $allowed_types = ["png", "jpg", "jpeg"];
+
+        // Check for allowed files extension
+        // Check for any error when uploading the file in the HTML
+        // Check if file size does not exceed 6 MB.
+        if (in_array($file_ext, $allowed_types) && $file_error === 0 && $file_size < $max_file_size) {
+            if (!is_dir($upload_folder)) {
+                mkdir($upload_folder, 0777, true);
+            }
+            // get the file name
+            $file_newname = $file["name"];
+            // Build the destination path
+            $file_dest = "../" . $upload_folder . $file_newname;
+
+            // if the file is successfully uploaded to server then update in db with image path.
+            if (move_uploaded_file($file_tmpname, $file_dest)) {
+                $imgPath = $upload_folder . $file_newname;
+                $sql = "UPDATE products 
+                        SET ProductName = :name, ProductPrice = :price, Description = :desp, imgPath = :imgPath, 
+                            Category = :cat, QtyInStock = :qty 
+                        WHERE ProductID = :id";
             } else {
-                $err_msg = "Error: Could not upload file!";
+                exit("Error: Could not upload file!");
             }
         } else {
-            $err_msg = "Error: File type not allowed!";
+            exit("Invalid file type or size too large!");
         }
+    } else {
+        $sql = "UPDATE products 
+                SET ProductName = :name, ProductPrice = :price, Description = :desp, 
+                    Category = :cat, QtyInStock = :qty 
+                WHERE ProductID = :id";
     }
 
-    // Execute the SQL update query
-    if (!isset($err_msg)) {
-        // Prepare and execute the SQL statement
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':price', $price);
-        $stmt->bindParam(':desp', $desc);
-        $stmt->bindParam(':cat', $cat);
-        $stmt->bindParam(':id', $id);
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':price', $price);
+    $stmt->bindParam(':desp', $desc);
+    $stmt->bindParam(':cat', $cat);
+    $stmt->bindParam(':qty', $qty);
+    $stmt->bindParam(':id', $id);
+    
+    if (isset($_FILES['file-select']) && $_FILES['file-select']['error'] !== 4) {
+        echo "here";
+        echo $imgPath;
+        $stmt->bindParam(':imgPath', $imgPath);
+    }
 
-        if (isset($imgPath)) {
-            $stmt->bindParam(':imgPath', $imgPath);  // Bind imgPath only if it's set
-        }
-
-        $success = $stmt->execute();
-        echo "here at stm execute";
-        if ($success) {
-            $success_msg = "Product updated successfully!";
-            echo $success_msg;
-            header("Location: ../adminpage.php");
-            exit();  // Make sure to stop the script after redirecting
-        } else {
-            $upload_err = "Error: Could not update the product!";
-        }
+    if ($stmt->execute()) {
+        header("Location: ../clerk/page.php");
+        exit();
+    } else {
+        echo "Error: Could not update the product!";
     }
 }
-
-
 ?>

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg p-3 bg-light sticky-top d-flex">
-    <a href="../../futuretech/adminpage.php" class="navbar-brand">
+    <a href="<?php echo $homepage; ?>" class="navbar-brand">
         <img src="../../futuretech/images/Logo/Logo.png" alt="Futuretech Logo" width="50" style="vertical-align:bottom">
     </a>
 
@@ -19,7 +19,7 @@
                 <?php
 
                 ?>
-                <a class="nav-link" href="../../futuretech/account.php">
+                <a class="nav-link" href="<?php echo $account_link; ?>">
                     <div class="bg-primary p-2 m-1 text-white rounded">
                         <?php echo htmlspecialchars($_SESSION['username']); ?>
                     </div>
