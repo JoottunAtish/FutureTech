@@ -1,3 +1,6 @@
 RewriteEngine on
 
-ReWriteRule ^API/V1/product/getAll API/product/getAll.php
+ReWriteRule ^V1/product/getAll API/product/getAll.php
+ReWriteRule ^V1/product/getDeals API/product/getDeals.php
+ReWriteRule ^V1/product/getParts API/product/getParts.php
+ReWriteRule ^V1/product/search API/product/search.php

@@ -8,7 +8,11 @@ class product
         $query = "select * from products;";
         $controller = new DBController();
         $res = $controller->executeSelectQuery($query);
-        $out = array("success" => 1, "result" => $res);
+        if (empty($res)){ 
+            $out = array("success" => 0, "message" => "An error has occurred.", "result" => $res);
+        } else {
+            $out = array("success" => 1, "message" => "No error", "result" => $res);
+        }
         return $out;
     }
 
